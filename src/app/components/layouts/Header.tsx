@@ -8,18 +8,18 @@ const { Header, Content, Footer } = Layout;
 const items = [
   {
     key: "1",
-    label: "Home",
+    label: "Trang chủ",
     path: "/",
   },
   {
     key: "2",
-    label: "About",
-    path: "/portfolio",
-  },
-  {
-    key: "4",
     label: "Blog",
     path: "/blog",
+  },
+  {
+    key: "3",
+    label: "Giới thiệu",
+    path: "/portfolio",
   },
 ];
 
@@ -70,17 +70,17 @@ export function HeaderPage() {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
+          defaultSelectedKeys={["1"]}
           items={items}
           onClick={handleMenuClick} // Thêm onClick handler để điều hướng
           style={{ flex: 1, minWidth: 0 }}
         />
       </Header>
-      <Content style={{ padding: "0 48px" }}>
+      {/* <Content style={{ padding: "0 48px" }}>
         <Breadcrumb style={{ margin: "16px 0" }}>
           {getBreadcrumbItems()}
         </Breadcrumb>
-      </Content>
+      </Content> */}
     </>
   );
 }
