@@ -1,10 +1,12 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { Layout, Avatar, Typography, Row, Col, Card, Space } from "antd";
 import {
   GithubOutlined,
   MailOutlined,
   LinkedinOutlined,
 } from "@ant-design/icons";
+import { Radio, Timeline } from "antd";
 import { FaReact } from "react-icons/fa";
 import { RiNextjsFill } from "react-icons/ri";
 import { FaVuejs } from "react-icons/fa";
@@ -61,25 +63,61 @@ export default function Portfolio() {
               <Card>
                 <div className="flex items-center gap-2">
                   <span className="text-2xl">{skill.icon}</span>
-                  <span >{skill.name}</span>
+                  <span>{skill.name}</span>
                 </div>
               </Card>
             </Col>
           ))}
         </Row>
       </div>
+      <div className="mt-4">
+        <Timeline
+          mode={"left"}
+          items={[
+            {
+              label: "2015-09-01",
+              children: "Thực tập tại Comit",
+            },
+            {
+              label: "2015-09-01 09:12:11",
+              children: "Trở thành nhân viên chính thức",
+            },
+            {
+              children: "Frontend Developer",
+            },
+            {
+              label: "2015-09-01 09:12:11",
+              children: "VDTSol",
+            },
+            {
+              label: "01-01-2025",
+              children: "Công ty cổ phần học viện Minh Trí Thành",
+            },
+          ]}
+        />
+      </div>
 
       <div style={{ marginTop: 40 }}>
         <Title level={3}>Dự án</Title>
         <Row gutter={[16, 16]}>
           <Col xs={24} md={12}>
-            <Card title="Website bán hàng" bordered={false}>
-              Xây dựng website bán hàng dùng React, Node.js và MongoDB.
+            <Card title="Hệ thống Chấm công  AI timelog">
+              Chấm công bằng nhận diện khuôn mặt sử dụng trí tuệ nhân tạo, Giúp
+              người lao động giảm tải tâm lý do ùn tắc, chấm công chậm và dễ
+              dàng theo dõi.
             </Card>
           </Col>
           <Col xs={24} md={12}>
-            <Card title="Blog cá nhân" bordered={false}>
-              Blog viết bằng Next.js + Tailwind CSS.
+            <Card title="PN-Stack">
+              {" "}
+              Là một hệ thống ERP được xây dựng nhằm cung cấp giải pháp quản lí
+              kho, nhân viên, kinh doanh, buôn bán và thống kê cho doanh nghiệp.
+            </Card>
+          </Col>
+          <Col xs={24} md={12}>
+            <Card title="ERP-SPACE">
+              Là một hệ thống ERP được xây dựng nhằm cung cấp giải pháp quản lí
+              kho, nhân viên, kinh doanh, buôn bán và thống kê cho doanh nghiệp.
             </Card>
           </Col>
         </Row>
