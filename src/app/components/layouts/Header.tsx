@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Breadcrumb, Layout, Menu } from "antd";
 import { useRouter, usePathname } from "next/navigation";
+import { useLoadingStore } from "@/app/stores/useLoadingStore";
 
 const { Header, Content, Footer } = Layout;
 
@@ -27,6 +28,7 @@ export function HeaderPage() {
   const router = useRouter();
   const pathname = usePathname();
   const [isMounted, setIsMounted] = useState(false);
+  const { show, hide } = useLoadingStore();
 
   useEffect(() => {
     setIsMounted(true);
@@ -35,10 +37,15 @@ export function HeaderPage() {
   const handleMenuClick = (e: any) => {
     const selectedItem = items.find((item) => item.key === e.key);
     if (selectedItem && isMounted) {
+      show();
       router.push(selectedItem.path);
     }
   };
-
+  useEffect(() => {
+    // Mỗi khi pathname thay đổi là route đã xong -> tắt loading
+    hide();
+  }, [pathname]);
+  
   if (!isMounted) {
     return null;
   }

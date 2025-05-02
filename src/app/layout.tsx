@@ -5,6 +5,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ThemeProvider } from "next-themes";
 import { HeaderPage } from "./components/layouts/Header";
 import { FooterPage } from "./components/layouts/Footer";
+import GlobalLoading from "./common/loading/GlobalLoading";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,10 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class">
           <HeaderPage />
-          <AntdRegistry>{children}</AntdRegistry>
+          <AntdRegistry>
+            <GlobalLoading />
+            {children}
+          </AntdRegistry>
           <FooterPage />
         </ThemeProvider>
       </body>
