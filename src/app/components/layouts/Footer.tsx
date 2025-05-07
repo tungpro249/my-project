@@ -7,17 +7,17 @@ const { Text } = Typography;
 
 export function FooterPage() {
   return (
-    <Footer style={{ backgroundColor: "#001529", color: "white", padding: "30px 50px" }}>
+    <Footer className="!bg-[#001529] text-white p-[30px 50px]">
       <Row gutter={16}>
         {/* Logo or Text */}
         <Col span={24} style={{ textAlign: "center", marginBottom: "20px" }}>
-          <Text style={{ fontSize: "20px", fontWeight: "bold" }}>Đoàn Thanh Tùng Blog</Text>
+          <Text className="!text-white text-2xl font-bold">Đoàn Thanh Tùng Blog</Text>
         </Col>
 
         {/* Navigation Links */}
         <Col xs={24} sm={12} md={8} lg={6}>
           <div style={{ textAlign: "center" }}>
-            <Text strong style={{ fontSize: "16px" }}>Liên kết</Text>
+            <Text strong className="!text-white" style={{ fontSize: "16px" }}>Liên kết</Text>
             <div style={{ marginTop: "10px" }}>
               <Space direction="vertical">
                 <Text style={{ color: "#ccc" }}>Trang chủ</Text>
