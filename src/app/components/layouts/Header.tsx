@@ -77,7 +77,6 @@ export function HeaderPage() {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["1"]}
           items={items}
           onClick={handleMenuClick} // Thêm onClick handler để điều hướng
           style={{ flex: 1, minWidth: 0 }}
