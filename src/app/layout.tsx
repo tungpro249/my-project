@@ -33,12 +33,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased animate__animated animate__fadeInDown animate__faster`}
       >
         <ThemeProvider attribute="class">
-          <HeaderPage />
           <AntdRegistry>
             <GlobalLoading />
             {children}
           </AntdRegistry>
-          <FooterPage />
         </ThemeProvider>
       </body>
     </html>
