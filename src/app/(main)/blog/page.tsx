@@ -2,7 +2,7 @@ import { Layout, Row, Col, Typography, Card, Button } from "antd";
 import Link from "next/link";
 
 export default async function BlogPage() {
-  const res = await fetch("http://localhost:5000/post", { cache: "no-store" });
+  const res = await fetch("https://backend-nest-og78.onrender.com/post", { cache: "no-store" });
   const blogPosts = await res.json();
 
   return (
