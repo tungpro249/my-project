@@ -3,26 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Breadcrumb, Layout, Menu } from "antd";
 import { useRouter, usePathname } from "next/navigation";
 import { useLoadingStore } from "@/app/stores/useLoadingStore";
+import { items } from "@/app/screen";
 
 const { Header, Content, Footer } = Layout;
-
-const items = [
-  {
-    key: "1",
-    label: "Trang chủ",
-    path: "/",
-  },
-  {
-    key: "2",
-    label: "Blog",
-    path: "/blog",
-  },
-  {
-    key: "3",
-    label: "Giới thiệu",
-    path: "/portfolio",
-  },
-];
 
 export function HeaderPage() {
   const router = useRouter();
@@ -36,7 +19,7 @@ export function HeaderPage() {
 
   const handleMenuClick = (e: any) => {
     const selectedItem = items.find((item) => item.key === e.key);
-    if (selectedItem && isMounted) {
+    if (selectedItem && isMounted && pathname !== selectedItem.path) {
       show();
       router.push(selectedItem.path);
     }
@@ -73,12 +56,12 @@ export function HeaderPage() {
           alignItems: "center",
         }}
       >
-        <div className="demo-logo" style={{ flex: 1 }} />
+        {/* <div className="demo-logo" style={{ flex: 1 }} /> */}
         <Menu
           theme="dark"
           mode="horizontal"
           items={items}
-          onClick={handleMenuClick} // Thêm onClick handler để điều hướng
+          onClick={handleMenuClick}
           style={{ flex: 1, minWidth: 0 }}
         />
       </Header>

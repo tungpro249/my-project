@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import DOMPurify from 'dompurify';
 
 interface BlogPost {
   id: number;
@@ -33,7 +34,7 @@ export default async function BlogDetailPage({
     <div className="max-w-3xl mx-auto px-4 py-10">
       <div className="mt-6 prose prose-lg prose-slate">
         {/* Nếu bạn render HTML từ server thì dùng dangerouslySetInnerHTML */}
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }} />
       </div>
     </div>
   );

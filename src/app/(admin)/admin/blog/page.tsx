@@ -1,5 +1,6 @@
 import { Button, Card, Col, Row } from "antd";
 import Link from "next/link";
+import DOMPurify from 'dompurify';
 
 export default async function AdminBlogPage() {
   const res = await fetch("http://localhost:5000/post", { cache: "no-store" });
@@ -19,7 +20,7 @@ export default async function AdminBlogPage() {
               }
               className="shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300"
             >
-              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+              <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }} />
               <Link href={`/post/${post.id}`}>
                 <Button type="primary" className="">
                   Sửa bài viết
