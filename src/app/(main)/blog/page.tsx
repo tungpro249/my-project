@@ -1,4 +1,4 @@
-import { Layout, Row, Col, Typography, Card, Button } from "antd";
+import { Row, Col, Card, Button } from "antd";
 import Link from "next/link";
 
 export default async function BlogPage() {
@@ -17,7 +17,7 @@ export default async function BlogPage() {
               title={<span className="!text-xl !font-semibold">{post.title}</span>}
               className="shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300"
             >
-              <p className="block mb-4">{post.content}</p>
+              <div  dangerouslySetInnerHTML={{ __html: post.content }} />
               <Link href={`/post/${post.id}`}>
                 <Button type="primary" className="w-full">
                   Đọc tiếp
