@@ -18,7 +18,7 @@ export default async function BlogPage() {
               className="shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300"
             >
               <div  dangerouslySetInnerHTML={{ __html: post.content }} />
-              <Link href={`/post/${post.id}`}>
+              <Link href={`/blog/${post.id}`}>
                 <Button type="primary" className="w-full">
                   Đọc tiếp
                 </Button>
