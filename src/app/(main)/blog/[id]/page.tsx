@@ -9,7 +9,7 @@ interface BlogPost {
   slug: string;
 }
 
-async function getPostBySlug(id: string): Promise<BlogPost | null> {
+async function getPostBySlug(id: number): Promise<BlogPost | null> {
   try {
     const res = await fetch(`http://localhost:5000/post/${id}`, {
       cache: "no-store",
@@ -39,7 +39,7 @@ async function getPostBySlug(id: string): Promise<BlogPost | null> {
 export default async function BlogDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: { id: number };
 }) {
   const post = await getPostBySlug(params.id);
 
