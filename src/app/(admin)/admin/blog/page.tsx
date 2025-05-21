@@ -1,4 +1,3 @@
-// app/admin/blog/page.tsx (Server Component)
 import BlogList from "./BlogList";
 
 export default async function AdminBlogPage() {
