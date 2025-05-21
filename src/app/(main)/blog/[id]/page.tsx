@@ -21,8 +21,7 @@ async function getPostBySlug(id: string): Promise<BlogPost | null> {
     }
 
     const response = await res.json();
-    // Assuming the API returns { data: { ...post } }
-    const post: BlogPost = response.data[0];
+    const post: BlogPost = response.data;
 
     if (!post || !post.content) {
       console.error("Invalid post data:", post);
@@ -44,9 +43,7 @@ export default async function BlogDetailPage({
   const post = await getPostBySlug(params.id);
 
   if (!post) return notFound();
-  console.log('post.content', post.content);
 
-  // Sanitize the content
   const sanitizedContent = DOMPurify.sanitize(post.content);
 
   return (
