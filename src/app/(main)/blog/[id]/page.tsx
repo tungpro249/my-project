@@ -34,12 +34,13 @@ async function getPostBySlug(id: string): Promise<BlogPost | null> {
     return null;
   }
 }
+type Props = {
+  params: {
+    id: string;
+  };
+};
 
-export default async function BlogDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function BlogDetailPage({ params }: Props) {
   const post = await getPostBySlug(params.id);
 
   if (!post) return notFound();
