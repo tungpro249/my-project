@@ -2,7 +2,7 @@ import { Row, Col, Card, Button } from "antd";
 import Link from "next/link";
 
 export default async function BlogPage() {
-  const res = await fetch("http://localhost:5000/post", { cache: "no-store" });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/post`, { cache: "no-store" });
   const blogPosts = await res.json();
 
   return (
@@ -20,7 +20,7 @@ export default async function BlogPage() {
               className="shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300"
             >
               <div dangerouslySetInnerHTML={{ __html: post.content }} />
-              <Link href={`/blog/${post.id}`}>
+              <Link href={`/blog/${post.slug}`}>
                 <Button type="primary" className="w-full">
                   Đọc tiếp
                 </Button>
