@@ -28,7 +28,7 @@ export function HeaderPage() {
     // Mỗi khi pathname thay đổi là route đã xong -> tắt loading
     hide();
   }, [pathname]);
-  
+
   if (!isMounted) {
     return null;
   }

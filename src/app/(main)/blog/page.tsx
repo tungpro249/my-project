@@ -14,10 +14,12 @@ export default async function BlogPage() {
         {blogPosts.data.map((post: any) => (
           <Col xs={24} sm={12} md={8} key={post.id}>
             <Card
-              title={<span className="!text-xl !font-semibold">{post.title}</span>}
+              title={
+                <span className="!text-xl !font-semibold">{post.title}</span>
+              }
               className="shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300"
             >
-              <div  dangerouslySetInnerHTML={{ __html: post.content }} />
+              <div dangerouslySetInnerHTML={{ __html: post.content }} />
               <Link href={`/blog/${post.id}`}>
                 <Button type="primary" className="w-full">
                   Đọc tiếp

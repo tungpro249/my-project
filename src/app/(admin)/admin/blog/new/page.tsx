@@ -1,6 +1,11 @@
 "use client";
 
-import Editor from "@/app/components/Editor";
+import dynamic from "next/dynamic";
+
+// Import Editor với ssr: false
+const Editor = dynamic(() => import("@/app/components/Editor"), {
+  ssr: false,
+});
 
 export default function AdminBlogNewPage() {
   return (
