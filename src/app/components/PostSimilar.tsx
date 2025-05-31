@@ -1,8 +1,6 @@
-import SearchForm from "@/app/components/ui/form/Search";
 import { Row, Col, Card } from "antd";
 import Link from "next/link";
 import dayjs from "dayjs";
-import Pagination from "@/app/components/ui/Pagination";
 
 interface Post {
   id: number;
@@ -13,7 +11,7 @@ interface Post {
   created_at: string;
 }
 
-export default async function BlogPage() {
+export default async function PostSimilar() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/post`, {
     cache: "no-store",
   });
@@ -21,13 +19,7 @@ export default async function BlogPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 bg-white">
-      <p className="text-center mb-8 !text-3xl !font-bold">
-        Danh sách bài viết
-      </p>
-      <div className="mb-8">
-        <SearchForm />
-      </div>
-
+      <p className="mb-8 !text-3xl !font-bold">Bài viết liên quan</p>
       <Row gutter={[24, 24]}>
         {blogPosts.data.map((post: Post) => (
           <Col xs={24} sm={24} md={24} key={post.id}>
@@ -54,9 +46,6 @@ export default async function BlogPage() {
           </Col>
         ))}
       </Row>
-      <div className="mt-8">
-        <Pagination />
-      </div>
     </div>
   );
 }

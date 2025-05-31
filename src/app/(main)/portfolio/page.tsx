@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { Layout, Avatar, Typography, Row, Col, Card, Space } from "antd";
 import {
   GithubOutlined,

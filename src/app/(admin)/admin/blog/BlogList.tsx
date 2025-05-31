@@ -9,9 +9,12 @@ export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
   const [posts, setPosts] = useState(initialPosts);
 
   const handleDelete = async (id: string) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/post/${id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/post/${id}`,
+      {
+        method: "DELETE",
+      },
+    );
     if (res.ok) {
       message.success("Xóa bài viết thành công");
       setPosts((prev) => prev.filter((p) => p.id !== id));

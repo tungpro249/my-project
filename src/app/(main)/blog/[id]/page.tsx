@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import DOMPurify from "isomorphic-dompurify"; // Use isomorphic-dompurify for SSR
+import PostSimilar from "@/app/components/PostSimilar";
 
 interface BlogPost {
   id: number;
@@ -11,9 +12,12 @@ interface BlogPost {
 
 async function getPostBySlug(id: string): Promise<BlogPost | null> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/post/${id}`, {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/post/${id}`,
+      {
+        cache: "no-store",
+      },
+    );
 
     if (!res.ok) {
       console.error(`API error: ${res.status} ${res.statusText}`);
@@ -55,6 +59,7 @@ export default async function BlogDetailPage({ params }: Props) {
       <div className="mt-6 prose prose-lg prose-slate">
         <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
       </div>
+      <PostSimilar />
     </div>
   );
 }

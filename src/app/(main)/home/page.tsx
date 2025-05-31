@@ -1,7 +1,7 @@
 "use client";
-import { Layout, Row, Col, Typography, Card, Button, Space } from "antd";
+import { Layout, Row, Col, Typography, Card, Button } from "antd";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 const { Title, Text } = Typography;
 
 export function HomePage() {

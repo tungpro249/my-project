@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Breadcrumb, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 import { useRouter, usePathname } from "next/navigation";
 import { useLoadingStore } from "@/app/stores/useLoadingStore";
 import { items } from "@/app/screen";
 
-const { Header, Content, Footer } = Layout;
+const { Header } = Layout;
 
 export function HeaderPage() {
   const router = useRouter();
@@ -33,16 +33,16 @@ export function HeaderPage() {
     return null;
   }
 
-  const getBreadcrumbItems = () => {
-    const paths = pathname.split("/").filter(Boolean); // Sử dụng pathname thay vì router.pathname
-    return paths.map((segment, index) => {
-      return (
-        <Breadcrumb.Item key={index}>
-          {segment.charAt(0).toUpperCase() + segment.slice(1)}
-        </Breadcrumb.Item>
-      );
-    });
-  };
+  // const getBreadcrumbItems = () => {
+  //   const paths = pathname.split("/").filter(Boolean);
+  //   return paths.map((segment, index) => {
+  //     return (
+  //       <Breadcrumb.Item key={index}>
+  //         {segment.charAt(0).toUpperCase() + segment.slice(1)}
+  //       </Breadcrumb.Item>
+  //     );
+  //   });
+  // };
 
   return (
     <>

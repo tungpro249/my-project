@@ -3,8 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ThemeProvider } from "next-themes";
-import { HeaderPage } from "./components/layouts/Header";
-import { FooterPage } from "./components/layouts/Footer";
 import GlobalLoading from "./common/loading/GlobalLoading";
 
 const geistSans = Geist({
