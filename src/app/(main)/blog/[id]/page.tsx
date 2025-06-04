@@ -16,7 +16,7 @@ async function getPostBySlug(id: string): Promise<BlogPost | null> {
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/post/${id}`,
       {
         cache: "no-store",
-      },
+      }
     );
 
     if (!res.ok) {
@@ -54,12 +54,14 @@ export default async function BlogDetailPage({ params }: Props) {
   const sanitizedContent = DOMPurify.sanitize(post.content);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold mb-6">{post.title}</h1>
-      <div className="mt-6 prose prose-lg prose-slate">
-        <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
+    <>
+      <div className="max-w-6xl mx-auto px-4 py-10">
+        <h1 className="text-3xl font-bold mb-6">{post.title}</h1>
+        <div className="mt-6 prose prose-lg prose-slate">
+          <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
+        </div>
       </div>
       <PostSimilar />
-    </div>
+    </>
   );
 }

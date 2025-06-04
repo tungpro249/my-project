@@ -65,6 +65,39 @@ export function FooterPage() {
           </div>
         </Col>
 
+        <Col xs={24} sm={12} md={8} lg={6}>
+          <div style={{ textAlign: "center" }}>
+            <Text strong style={{ fontSize: "16px", color: "white" }}>
+              Nhận email thông báo
+            </Text>
+            <div style={{ marginTop: "10px" }}>
+              <Space>
+                <input
+                  type="email"
+                  placeholder="Nhập địa chỉ email"
+                  style={{
+                    padding: "5px",
+                    borderRadius: "5px",
+                    width: "200px",
+                    backgroundColor: "white",
+                    outline: "none",
+                  }}
+                />
+                <button
+                  style={{
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    backgroundColor: "#1890ff",
+                    color: "white",
+                  }}
+                >
+                  Gửi
+                </button>
+              </Space>
+            </div>
+          </div>
+        </Col>
+
         {/* Copyright */}
         <Col span={24} style={{ textAlign: "center", marginTop: "30px" }}>
           <Divider style={{ borderColor: "#444" }} />
