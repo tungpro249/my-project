@@ -21,17 +21,34 @@ export function HomePage() {
         {/* Giới thiệu ngắn gọn */}
         <Col xs={24} sm={24} md={16}>
           <GallaryCarousel />
-          <Card
-            style={{ marginBottom: "30px" }}
-            title="Chào mừng đến với blog của Đoàn Thanh Tùng"
-          >
-            <Text style={{ fontSize: "18px" }}>
-              Đây là nơi tôi chia sẻ những bài viết về công nghệ, lập trình và
-              các kinh nghiệm trong công việc. Bạn có thể tìm thấy các bài viết
-              thú vị, thông tin hữu ích, và những bài học kinh nghiệm trong suốt
-              hành trình của tôi.
-            </Text>
-          </Card>
+
+          <div className="mt-4">
+            <Title level={4}>Bài viết nổi bật</Title>
+            <Card
+              title="Lập trình React cho người mới bắt đầu"
+              style={{ marginBottom: "20px" }}
+            >
+              <Text>
+                Hướng dẫn cơ bản cho những ai mới bắt đầu học React...
+              </Text>
+              <br />
+              <Button type="link" href="/post/react-beginner">
+                Đọc tiếp
+              </Button>
+            </Card>
+            <Card
+              title="Lập trình React cho người mới bắt đầu"
+              style={{ marginBottom: "20px" }}
+            >
+              <Text>
+                Hướng dẫn cơ bản cho những ai mới bắt đầu học React...
+              </Text>
+              <br />
+              <Button type="link" href="/post/react-beginner">
+                Đọc tiếp
+              </Button>
+            </Card>
+          </div>
         </Col>
 
         {/* Các bài viết gần đây */}
@@ -47,7 +64,7 @@ export function HomePage() {
               Đọc tiếp
             </Button>
           </Card>
-          Bài viết liên quan
+          <Title level={4}>Bài viết liên quan</Title>
           <Card
             title="Công nghệ Web 2025: Xu hướng và Thách thức"
             style={{ marginBottom: "20px" }}
@@ -61,15 +78,16 @@ export function HomePage() {
               Đọc tiếp
             </Button>
           </Card>
-          <Col xs={24} sm={24} md={8}>
-            <Title level={4}>HashTag</Title>
-            <div className="flex gap-2">
-              
-            {hashTag.map((tag) => (
-              <Tag>#{tag.name}</Tag>
-            ))}
+          <Title level={4}>HashTag</Title>
+          <Card className="w-full">
+            <div className="gap-2">
+              {hashTag.map((tag, index) => (
+                <Tag key={index} color={tag.color} style={{ margin: "2px" }} className="cursor-pointer">
+                  #{tag.name}
+                </Tag>
+              ))}
             </div>
-          </Col>
+          </Card>
         </Col>
       </Row>
     </Content>
