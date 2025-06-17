@@ -16,7 +16,7 @@ async function getPostBySlug(id: string): Promise<BlogPost | null> {
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/post/${id}`,
       {
         cache: "no-store",
-      }
+      },
     );
 
     if (!res.ok) {

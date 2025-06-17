@@ -19,7 +19,9 @@ export default async function PostSimilar() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 bg-white">
-      <h2 className="mb-8 text-3xl font-bold text-gray-800">Bài viết liên quan</h2>
+      <h2 className="mb-8 text-3xl font-bold text-gray-800">
+        Bài viết liên quan
+      </h2>
       <Row gutter={[24, 24]}>
         {blogPosts.data.slice(0, 6).map((post: Post) => (
           <Col key={post.id} xs={24} sm={12} md={8}>

@@ -2,7 +2,7 @@ export default function SearchForm() {
   return (
     <form className="max-w-md mx-auto">
       <label
-        for="default-search"
+        htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
       >
         Tìm kiếm

@@ -14,7 +14,7 @@ const hashTag = [
   { name: "Nodejs", color: "#1890ff" },
 ];
 
-export function HomePage() {
+export default function HomePage() {
   return (
     <Content style={{ padding: "20px 50px" }}>
       <Row gutter={32} justify="center">
@@ -82,7 +82,12 @@ export function HomePage() {
           <Card className="w-full">
             <div className="gap-2">
               {hashTag.map((tag, index) => (
-                <Tag key={index} color={tag.color} style={{ margin: "2px" }} className="cursor-pointer">
+                <Tag
+                  key={index}
+                  color={tag.color}
+                  style={{ margin: "2px" }}
+                  className="cursor-pointer"
+                >
                   #{tag.name}
                 </Tag>
               ))}
