@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { Swiper as SwiperType } from 'swiper';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -26,15 +26,17 @@ const images = [
 ];
 
 export default function GallaryCarousel() {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
     <>
       <Swiper
-        style={{
-          "--swiper-navigation-color": "#fff",
-          "--swiper-pagination-color": "#fff",
-        }}
+        style={
+          {
+            "--swiper-navigation-color": "#fff",
+            "--swiper-pagination-color": "#fff",
+          } as React.CSSProperties
+        }
         loop={true}
         spaceBetween={10}
         navigation={true}
