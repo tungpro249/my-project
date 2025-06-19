@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperType } from 'swiper';
+import { Swiper as SwiperType } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -12,6 +12,7 @@ import "./style.css";
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import Image from "next/image";
 
 const images = [
   "https://swiperjs.com/demos/images/nature-1.jpg",
@@ -46,7 +47,7 @@ export default function GallaryCarousel() {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <img src={image} width={300} height={300} />
+            <Image src={image} alt="index" width={300} height={300} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -62,7 +63,7 @@ export default function GallaryCarousel() {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <img src={image} width={300} height={300} />
+            <Image src={image} alt="index" width={300} height={300} />
           </SwiperSlide>
         ))}
       </Swiper>

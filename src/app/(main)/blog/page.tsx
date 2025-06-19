@@ -3,21 +3,11 @@ import { Row, Col, Card } from "antd";
 import Link from "next/link";
 import dayjs from "dayjs";
 import Pagination from "@/app/components/ui/Pagination";
-
-interface Post {
-  id: number;
-  title: string;
-  short_description: string;
-  content: string;
-  slug: string;
-  created_at: string;
-}
+import { fetchPosts } from "@/app/services/posts/posts.services";
+import { Post } from "@/app/services/posts/post.type";
 
 export default async function BlogPage() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/post`, {
-    cache: "no-store",
-  });
-  const blogPosts = await res.json();
+  const blogPosts = await fetchPosts();
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 bg-white">
@@ -29,7 +19,7 @@ export default async function BlogPage() {
       </div>
 
       <Row gutter={[24, 24]}>
-        {blogPosts.data.map((post: Post) => (
+        {blogPosts.map((post: Post) => (
           <Col xs={24} sm={24} md={24} key={post.id}>
             <Link href={`/blog/${post.slug}`}>
               <Card

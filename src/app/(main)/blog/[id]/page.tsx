@@ -1,16 +1,9 @@
 import { notFound } from "next/navigation";
 import DOMPurify from "isomorphic-dompurify"; // Use isomorphic-dompurify for SSR
 import PostSimilar from "@/app/components/PostSimilar";
+import { Post } from "@/app/services/posts/post.type";
 
-interface BlogPost {
-  id: number;
-  title: string;
-  description?: string;
-  content: string;
-  slug: string;
-}
-
-async function getPostBySlug(id: string): Promise<BlogPost | null> {
+async function getPostBySlug(id: string): Promise<Post | null> {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/post/${id}`,
@@ -25,7 +18,7 @@ async function getPostBySlug(id: string): Promise<BlogPost | null> {
     }
 
     const response = await res.json();
-    const post: BlogPost = response.data;
+    const post: Post = response.data;
 
     if (!post || !post.content) {
       console.error("Invalid post data:", post);

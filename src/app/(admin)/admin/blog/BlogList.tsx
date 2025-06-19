@@ -28,7 +28,7 @@ export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
       {posts.map((post) => (
         <Col key={post.id} xs={24}>
           <Card title={post.title}>
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div dangerouslySetInnerHTML={{ __html: post.short_description }} />
             <div className="flex gap-2 mt-2">
               <Link href={`/post/${post.id}`}>
                 <Button type="primary">Sửa</Button>

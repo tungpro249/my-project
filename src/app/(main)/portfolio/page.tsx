@@ -56,7 +56,7 @@ export default function Portfolio() {
               src="/assets/my-avatar.png"
               className="border-4 border-transparent group-hover:border-blue-500 group-hover:scale-105 transition duration-300 "
             />
-            {/* <div className="absolute inset-0 rounded-full border-4 border-blue-300 opacity-0 group-hover:opacity-100 animate-pulse transition duration-300"></div> */}
+            {/* <div className="absolute w-[207px] ml-[10px] inset-0 rounded-full border-5 border-blue-300 opacity-0 group-hover:opacity-100 animate-pulse transition duration-300"></div> */}
           </Col>
           <Col xs={24} md={16}>
             <Title level={2} data-aos="fade-right" className="text-blue-700">
