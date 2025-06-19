@@ -1,12 +1,12 @@
 const nextConfig = {
   // output: 'export',
   // trailingSlash: true,
-   images: {
+  images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'swiperjs.com',
-        pathname: '/demos/images/**',
+        protocol: "https",
+        hostname: "swiperjs.com",
+        pathname: "/demos/images/**",
       },
     ],
   },
