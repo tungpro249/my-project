@@ -10,7 +10,8 @@
     "lint": "next lint",
     "format": "prettier --check .",
     "prepare": "husky install",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "lint-staged": {
     "**/*.{js,ts,jsx,tsx}": [
@@ -22,6 +23,7 @@
     "@ant-design/nextjs-registry": "^1.0.2",
     "@ckeditor/ckeditor5-build-classic": "^41.4.2",
     "@ckeditor/ckeditor5-react": "^9.5.0",
+    "@next/bundle-analyzer": "^15.3.4",
     "animate.css": "^4.1.1",
     "antd": "^5.24.8",
     "aos": "^2.3.4",
@@ -45,6 +47,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^7.0.3",
     "cypress": "^14.4.1",
     "eslint": "9.24.0",
     "eslint-config-next": "^15.1.8",

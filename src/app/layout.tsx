@@ -4,6 +4,7 @@ import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ThemeProvider } from "next-themes";
 import GlobalLoading from "./common/loading/GlobalLoading";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
