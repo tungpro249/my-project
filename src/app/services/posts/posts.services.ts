@@ -1,8 +1,12 @@
 import { Post } from "./post.type";
 import { GET_LIST_POST } from "./posts.api";
 
-export async function fetchPosts() {
-  const res = await fetch(GET_LIST_POST, {
+export async function fetchPosts(key_search: string = "") {
+  const url = new URL(GET_LIST_POST);
+  if (key_search) {
+    url.searchParams.append("key_search", key_search);
+  }
+  const res = await fetch(url.toString(), {
     cache: "no-store",
   });
   if (!res.ok) {

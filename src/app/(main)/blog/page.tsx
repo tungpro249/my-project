@@ -6,8 +6,13 @@ import Pagination from "@/app/components/ui/Pagination";
 import { fetchPosts } from "@/app/services/posts/posts.services";
 import { Post } from "@/app/services/posts/post.type";
 
-export default async function BlogPage() {
-  const blogPosts = await fetchPosts();
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams?: { key_search?: string };
+}) {
+  const key_search = searchParams?.key_search || "";
+  const blogPosts = await fetchPosts(key_search);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 bg-white">
@@ -15,7 +20,7 @@ export default async function BlogPage() {
         Danh sách bài viết
       </p>
       <div className="mb-8">
-        <SearchForm />
+        <SearchForm defaultValue={key_search} />
       </div>
 
       <Row gutter={[24, 24]}>
