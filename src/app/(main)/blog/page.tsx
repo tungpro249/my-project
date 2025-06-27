@@ -9,10 +9,14 @@ import { Post } from "@/app/services/posts/post.type";
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams?: { key_search?: string };
+   searchParams?: Promise<{ key_search?: string; page?: string }>;
 }) {
-  const key_search = searchParams?.key_search;
-  const blogPosts = await fetchPosts(key_search);
+  const params = await searchParams;
+  const key_search = params?.key_search || "";
+  const page = parseInt(params?.page || "1", 10);
+  const pageSize = 10;
+
+  const { blogPosts, total } = await fetchPosts({ key_search, page, pageSize });
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 bg-white">
@@ -50,7 +54,7 @@ export default async function BlogPage({
         ))}
       </Row>
       <div className="mt-8">
-        <Pagination />
+        <Pagination total={total} pageSize={pageSize} />
       </div>
     </div>
   );

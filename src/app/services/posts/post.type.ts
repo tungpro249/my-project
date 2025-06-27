@@ -6,3 +6,9 @@ export interface Post {
   slug: string;
   created_at?: string;
 }
+
+export interface FetchPostsParams {
+  key_search?: string;
+  page?: number;
+  pageSize?: number;
+}
