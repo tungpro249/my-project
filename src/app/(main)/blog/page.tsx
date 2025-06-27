@@ -9,7 +9,7 @@ import { Post } from "@/app/services/posts/post.type";
 export default async function BlogPage({
   searchParams,
 }: {
-   searchParams?: Promise<{ key_search?: string; page?: string }>;
+  searchParams?: Promise<{ key_search?: string; page?: string }>;
 }) {
   const params = await searchParams;
   const key_search = params?.key_search || "";

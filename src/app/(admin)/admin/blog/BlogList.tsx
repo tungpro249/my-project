@@ -6,7 +6,7 @@ import { Button, Card, Col, Row, message } from "antd";
 import Link from "next/link";
 
 export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
-  const [posts, setPosts] = useState(initialPosts);
+  const [posts, setPosts] = useState<any>(initialPosts);
 
   const handleDelete = async (id: string) => {
     const res = await fetch(
@@ -17,7 +17,7 @@ export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
     );
     if (res.ok) {
       message.success("Xóa bài viết thành công");
-      setPosts((prev) => prev.filter((p) => p.id !== id));
+      setPosts((prev: any) => prev.filter((p: any) => p.id !== id));
     } else {
       message.error("Xóa thất bại");
     }
@@ -25,7 +25,7 @@ export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
 
   return (
     <Row gutter={[24, 24]}>
-      {posts.map((post) => (
+      {posts.blogPosts.map((post: any) => (
         <Col key={post.id} xs={24}>
           <Card title={post.title}>
             <div dangerouslySetInnerHTML={{ __html: post.short_description }} />
