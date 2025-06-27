@@ -3,7 +3,11 @@ import { useRouter } from "next/navigation";
 import { Input, Button } from "antd";
 import { useState } from "react";
 
-export default function SearchForm({ defaultValue = "" }: { defaultValue?: string }) {
+export default function SearchForm({
+  defaultValue = "",
+}: {
+  defaultValue?: string;
+}) {
   const router = useRouter();
   const [search, setSearch] = useState(defaultValue);
 

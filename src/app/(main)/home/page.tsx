@@ -1,20 +1,30 @@
 "use client";
 import GallaryCarousel from "@/app/components/carousel/GallaryCarousel";
+import { CategoryType } from "@/app/services/categories/category.type";
 import { Layout, Row, Col, Typography, Card, Button, Tag } from "antd";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
 
-const hashTag = [
-  { name: "Reactjs", color: "#1890ff" },
-  { name: "Nextjs", color: "#1890ff" },
-  { name: "Vuejs", color: "#1890ff" },
-  { name: "TypeScript", color: "#1890ff" },
-  { name: "Tailwind", color: "#1890ff" },
-  { name: "Nodejs", color: "#1890ff" },
-];
-
 export default function HomePage() {
+  const [hashTag, setHashTag] = useState<CategoryType[]>([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/categories/options`,
+        );
+        setHashTag(response.data.data);
+      } catch (error) {
+        console.error("Lỗi khi tải hashtag:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
   return (
     <Content style={{ padding: "20px 50px" }}>
       <Row gutter={32} justify="center">
@@ -81,10 +91,9 @@ export default function HomePage() {
           <Title level={4}>HashTag</Title>
           <Card className="w-full">
             <div className="gap-2">
-              {hashTag.map((tag, index) => (
+              {hashTag.map((tag: CategoryType) => (
                 <Tag
-                  key={index}
-                  color={tag.color}
+                  key={tag.id}
                   style={{ margin: "2px" }}
                   className="cursor-pointer"
                 >

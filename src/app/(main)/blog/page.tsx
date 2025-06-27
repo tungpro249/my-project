@@ -11,7 +11,7 @@ export default async function BlogPage({
 }: {
   searchParams?: { key_search?: string };
 }) {
-  const key_search = searchParams?.key_search || "";
+  const key_search = searchParams?.key_search;
   const blogPosts = await fetchPosts(key_search);
 
   return (
