@@ -6,6 +6,11 @@ import Pagination from "@/app/components/ui/Pagination";
 import { fetchPosts } from "@/app/services/posts/posts.services";
 import { Post } from "@/app/services/posts/post.type";
 
+export const metadata = {
+  title: "Blog",
+  description: "Đây là trang danh sách blog.",
+};
+
 export default async function BlogPage({
   searchParams,
 }: {
