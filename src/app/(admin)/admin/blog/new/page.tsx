@@ -1,8 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
+import { Select } from "antd";
+import axios from "axios";
+import { CategoryType } from "@/app/services/categories/category.type";
 
 // Import Editor với ssr: false
 const Editor = dynamic(() => import("@/app/components/Editor"), {
@@ -11,17 +14,35 @@ const Editor = dynamic(() => import("@/app/components/Editor"), {
 
 interface BlogFormData {
   title: string;
-  shortDescription: string;
+  short_description: string;
   content: string;
+  category_id: string;
 }
 
 export default function AdminBlogNewPage() {
   const router = useRouter();
+  const [hashTag, setHashTag] = useState<CategoryType[]>([]);
   const [formData, setFormData] = useState<BlogFormData>({
     title: "",
-    shortDescription: "",
+    short_description: "",
     content: "",
+    category_id: "0",
   });
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/categories/options`,
+        );
+        setHashTag(response.data.data);
+      } catch (error) {
+        console.error("Lỗi khi tải hashtag:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (
@@ -38,14 +59,18 @@ export default function AdminBlogNewPage() {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      // Giả lập gọi API để tạo bài viết
-      const res = await fetch("/api/posts", {
+      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+      if (!baseUrl) {
+        throw new Error("NEXT_PUBLIC_API_BASE_URL is not defined");
+      }
+
+      const res = await fetch(`${baseUrl}/post`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       if (!res.ok) throw new Error("Failed to create post");
-      router.push("/blog"); // Chuyển hướng sau khi tạo thành công
+      router.push("/blog");
     } catch (error) {
       console.error(error);
       alert("Có lỗi xảy ra. Vui lòng thử lại.");
@@ -95,13 +120,28 @@ export default function AdminBlogNewPage() {
             Mô tả ngắn
           </label>
           <textarea
-            id="shortDescription"
-            name="shortDescription"
-            value={formData.shortDescription}
+            id="short_description"
+            name="short_description"
+            value={formData.short_description}
             onChange={handleInputChange}
             className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             rows={4}
             placeholder="Nhập mô tả ngắn cho bài viết"
+          />
+        </div>
+
+        <div>
+          <Select
+            placeholder="Chọn danh mục"
+            className="w-full"
+            options={hashTag.map((tag) => ({
+              value: tag.id,
+              label: tag.name,
+            }))}
+            value={formData.category_id}
+            onChange={(value) =>
+              setFormData({ ...formData, category_id: `${value}` })
+            }
           />
         </div>
 
