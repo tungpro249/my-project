@@ -14,12 +14,16 @@ export const metadata = {
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams?: Promise<{ key_search?: string; page?: string }>;
+  searchParams?: Promise<{
+    key_search?: string;
+    page?: string;
+    pageSize?: string;
+  }>;
 }) {
   const params = await searchParams;
   const key_search = params?.key_search || "";
   const page = parseInt(params?.page || "1", 10);
-  const pageSize = 10;
+  const pageSize = parseInt(params?.pageSize || "10", 10);
 
   const { blogPosts, total } = await fetchPosts({ key_search, page, pageSize });
 

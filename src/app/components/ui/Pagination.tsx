@@ -13,7 +13,7 @@ export default function Pagination({ total, pageSize = 10 }: PaginationProps) {
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
   const currentPageSize = parseInt(
     searchParams.get("pageSize") || pageSize.toString(),
-    10
+    10,
   );
 
   const updateParams = (newParams: Record<string, string | number>) => {
@@ -29,7 +29,7 @@ export default function Pagination({ total, pageSize = 10 }: PaginationProps) {
   };
 
   const handlePageSizeChange = (current: number, size: number) => {
-    updateParams({ page: 1, limit: size });
+    updateParams({ page: 1, pageSize: size });
   };
 
   return (
