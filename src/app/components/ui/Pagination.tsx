@@ -11,22 +11,38 @@ export default function Pagination({ total, pageSize = 10 }: PaginationProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
+  const currentPageSize = parseInt(
+    searchParams.get("pageSize") || pageSize.toString(),
+    10,
+  );
 
-  const handlePageChange = (page: number) => {
+  const updateParams = (newParams: Record<string, string | number>) => {
     const params = new URLSearchParams(searchParams);
-    params.set("page", page.toString());
+    Object.entries(newParams).forEach(([key, value]) => {
+      params.set(key, String(value));
+    });
     router.push(`?${params.toString()}`);
   };
 
+  const handlePageChange = (page: number) => {
+    updateParams({ page });
+  };
+
+  const handlePageSizeChange = (current: number, size: number) => {
+    updateParams({ page: 1, pageSize: size });
+  };
+
   return (
-    <nav aria-label="Page navigation" className="flex justify-center mt-8">
+    <nav aria-label="Page navigation" className="flex mt-8">
       <AntdPagination
         current={currentPage}
         total={total}
-        pageSize={pageSize}
+        pageSize={currentPageSize}
         onChange={handlePageChange}
-        showSizeChanger={false}
-        responsive
+        onShowSizeChange={handlePageSizeChange}
+        showSizeChanger
+        showQuickJumper
+        showTotal={(total) => `Tổng ${total} bản ghi`}
       />
     </nav>
   );

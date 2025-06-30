@@ -6,15 +6,24 @@ import Pagination from "@/app/components/ui/Pagination";
 import { fetchPosts } from "@/app/services/posts/posts.services";
 import { Post } from "@/app/services/posts/post.type";
 
+export const metadata = {
+  title: "Blog",
+  description: "Đây là trang danh sách blog.",
+};
+
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams?: Promise<{ key_search?: string; page?: string }>;
+  searchParams?: Promise<{
+    key_search?: string;
+    page?: string;
+    pageSize?: string;
+  }>;
 }) {
   const params = await searchParams;
   const key_search = params?.key_search || "";
   const page = parseInt(params?.page || "1", 10);
-  const pageSize = 10;
+  const pageSize = parseInt(params?.pageSize || "10", 10);
 
   const { blogPosts, total } = await fetchPosts({ key_search, page, pageSize });
 
