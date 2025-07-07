@@ -5,10 +5,14 @@ export async function fetchPosts({
   key_search = "",
   page = 1,
   pageSize = 10,
+  category_id
 }: FetchPostsParams) {
   const url = new URL(GET_LIST_POST);
   if (key_search) {
     url.searchParams.append("key_search", key_search);
+  }
+  if (category_id) {
+    url.searchParams.append("category_id", category_id.toString());
   }
   url.searchParams.append("page", page.toString());
   url.searchParams.append("pageSize", pageSize.toString());
@@ -26,12 +30,6 @@ export async function fetchPosts({
     blogPosts: data.data as Post[],
     total: data.pagination.totalItems as number,
   };
-}
-
-interface FetchPostsParams {
-  key_search?: string;
-  page?: number;
-  pageSize?: number;
 }
 
 export async function createPosts({

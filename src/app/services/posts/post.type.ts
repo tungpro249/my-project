@@ -11,4 +11,5 @@ export interface FetchPostsParams {
   key_search?: string;
   page?: number;
   pageSize?: number;
+  category_id?: number;
 }

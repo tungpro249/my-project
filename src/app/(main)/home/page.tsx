@@ -96,6 +96,9 @@ export default function HomePage() {
                   key={tag.id}
                   style={{ margin: "2px" }}
                   className="cursor-pointer"
+                  onClick={() => {
+                    window.location.href = `/blog?category_id=${tag.id}`;
+                  }}
                 >
                   #{tag.name}
                 </Tag>

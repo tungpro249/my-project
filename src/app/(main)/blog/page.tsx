@@ -18,14 +18,23 @@ export default async function BlogPage({
     key_search?: string;
     page?: string;
     pageSize?: string;
+    category_id?: string;
   }>;
 }) {
   const params = await searchParams;
   const key_search = params?.key_search || "";
   const page = parseInt(params?.page || "1", 10);
   const pageSize = parseInt(params?.pageSize || "10", 10);
+  const rawId = params?.category_id;
+  const category_id =
+    rawId && !isNaN(parseInt(rawId)) ? parseInt(rawId, 10) : undefined;
 
-  const { blogPosts, total } = await fetchPosts({ key_search, page, pageSize });
+  const { blogPosts, total } = await fetchPosts({
+    key_search,
+    page,
+    pageSize,
+    category_id,
+  });
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 bg-white">
