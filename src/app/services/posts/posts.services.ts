@@ -5,7 +5,7 @@ export async function fetchPosts({
   key_search = "",
   page = 1,
   pageSize = 10,
-  category_id
+  category_id,
 }: FetchPostsParams) {
   const url = new URL(GET_LIST_POST);
   if (key_search) {
