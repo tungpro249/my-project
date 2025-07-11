@@ -9,6 +9,8 @@ const links = [
   { href: "/admin", label: "Dashboard" },
   { href: "/admin/blog", label: "Bài viết" },
   { href: "/admin/blog/new", label: "Tạo bài viết" },
+  { href: "/admin/category", label: "Danh mục" },
+  { href: "/admin/settings", label: "Cài đặt" },
 ];
 
 export default function Sidebar() {
