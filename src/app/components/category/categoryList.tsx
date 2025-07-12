@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Table } from "antd";
+import { Button, Form, Input, Table } from "antd";
+import CreateOrUpdate from "../ui/modal/CreateOrUpdate";
 
 interface Category {
   id: number;
@@ -11,6 +12,7 @@ interface Category {
 export default function CategoryList() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     // Giả lập fetch dữ liệu từ API
@@ -23,7 +25,7 @@ export default function CategoryList() {
       setTimeout(() => {
         setCategories(data);
         setLoading(false);
-      }, 1000); // Delay giả lập
+      }, 1000);
     };
 
     fetchCategories();
@@ -44,17 +46,47 @@ export default function CategoryList() {
   ];
 
   return (
-    <div style={{ padding: 24 }}>
-      <h2 style={{ fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
-        Danh sách danh mục
-      </h2>
-      <Table
-        columns={columns}
-        dataSource={categories}
-        loading={loading}
-        rowKey="id"
-        bordered
-      />
-    </div>
+    <>
+      <div style={{ padding: 24 }}>
+        <div className="flex justify-between mb-3">
+          <h2 style={{ fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
+            Danh sách danh mục
+          </h2>
+          <Button
+            type="primary"
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            Thêm danh mục
+          </Button>
+        </div>
+        <Table
+          columns={columns}
+          dataSource={categories}
+          loading={loading}
+          rowKey="id"
+          bordered
+        />
+      </div>
+      <CreateOrUpdate
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Thêm danh mục"
+        titleSubmit="Thêm mới"
+        titleCancel="Hủy"
+        handleSubmitForm={(values: any) => {
+          console.log("Add new category", values);
+        }}
+      >
+        <Form.Item
+          name="name"
+          label="Tên danh mục"
+          rules={[{ required: true, message: "Vui lòng nhập tên danh mục" }]}
+        >
+          <Input placeholder="Nhập tên danh mục" />
+        </Form.Item>
+      </CreateOrUpdate>
+    </>
   );
 }
