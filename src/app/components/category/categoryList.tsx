@@ -1,8 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Button, Form, Input, Table } from "antd";
+import { Button, Form, Input, Table, message } from "antd";
 import CreateOrUpdate from "../ui/modal/CreateOrUpdate";
+import {
+  CREATE_CATEGORY,
+  GET_LIST_CATEGORY,
+  UPDATE_CATEGORY,
+} from "@/app/services/categories/category.api";
 
 interface Category {
   id: number;
@@ -13,23 +18,68 @@ export default function CategoryList() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(false);
+  const [editingCategory, setEditingCategory] = useState<Category | null>(null);
+
+  // Load categories
+  const fetchCategories = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(GET_LIST_CATEGORY);
+      const data = await response.json();
+      setCategories(data.data || []);
+    } catch (error) {
+      message.error("Không thể tải danh mục");
+      console.log("Failed to fetch categories:", error);
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    // Giả lập fetch dữ liệu từ API
-    const fetchCategories = async () => {
-      const data: Category[] = [
-        { id: 1, name: "Quần áo" },
-        { id: 2, name: "Giày dép" },
-        { id: 3, name: "Phụ kiện" },
-      ];
-      setTimeout(() => {
-        setCategories(data);
-        setLoading(false);
-      }, 1000);
-    };
-
     fetchCategories();
   }, []);
+
+  // Create
+  const handleCreate = async (data: any) => {
+    try {
+      const res = await fetch(CREATE_CATEGORY, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        message.success("Thêm danh mục thành công");
+        fetchCategories();
+      } else {
+        message.error("Thêm danh mục thất bại");
+      }
+    } catch (error) {
+      message.error("Lỗi khi thêm danh mục");
+      console.log("Failed to create category:", error);
+    }
+    setOpen(false);
+  };
+
+  // Update
+  const handleUpdate = async (data: any) => {
+    try {
+      const res = await fetch(UPDATE_CATEGORY, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        message.success("Cập nhật thành công");
+        fetchCategories();
+      } else {
+        message.error("Cập nhật thất bại");
+      }
+    } catch (error) {
+      message.error("Lỗi khi cập nhật");
+      console.log("Failed to update category:", error);
+    }
+    setOpen(false);
+    setEditingCategory(null);
+  };
 
   const columns = [
     {
@@ -43,6 +93,26 @@ export default function CategoryList() {
       dataIndex: "name",
       key: "name",
     },
+    {
+      title: "Hành động",
+      key: "action",
+      render: (_: any, record: Category) => (
+        <div className="flex gap-2">
+          <Button
+            type="primary"
+            onClick={() => {
+              setEditingCategory(record);
+              setOpen(true);
+            }}
+          >
+            Sửa
+          </Button>
+          <Button type="primary" danger onClick={() => {}}>
+            Xóa
+          </Button>
+        </div>
+      ),
+    },
   ];
 
   return (
@@ -55,6 +125,7 @@ export default function CategoryList() {
           <Button
             type="primary"
             onClick={() => {
+              setEditingCategory(null);
               setOpen(true);
             }}
           >
@@ -71,12 +142,20 @@ export default function CategoryList() {
       </div>
       <CreateOrUpdate
         open={open}
-        onClose={() => setOpen(false)}
-        title="Thêm danh mục"
-        titleSubmit="Thêm mới"
+        onClose={() => {
+          setOpen(false);
+          setEditingCategory(null);
+        }}
+        title={editingCategory ? "Cập nhật danh mục" : "Thêm danh mục"}
+        titleSubmit={editingCategory ? "Cập nhật" : "Thêm mới"}
         titleCancel="Hủy"
+        initialValues={editingCategory || undefined}
         handleSubmitForm={(values: any) => {
-          console.log("Add new category", values);
+          if (editingCategory) {
+            handleUpdate({ ...editingCategory, ...values });
+          } else {
+            handleCreate(values);
+          }
         }}
       >
         <Form.Item
