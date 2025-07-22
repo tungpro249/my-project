@@ -5,6 +5,7 @@ import { Button, Form, Input, Table, message } from "antd";
 import CreateOrUpdate from "../ui/modal/CreateOrUpdate";
 import {
   CREATE_CATEGORY,
+  DELETE_CATEGORY,
   GET_LIST_CATEGORY,
   UPDATE_CATEGORY,
 } from "@/app/services/categories/category.api";
@@ -62,10 +63,12 @@ export default function CategoryList() {
   // Update
   const handleUpdate = async (data: any) => {
     try {
-      const res = await fetch(UPDATE_CATEGORY, {
+      const res = await fetch(`${UPDATE_CATEGORY}/${data.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          name: data.name,
+        }),
       });
       if (res.ok) {
         message.success("Cập nhật thành công");
@@ -79,6 +82,24 @@ export default function CategoryList() {
     }
     setOpen(false);
     setEditingCategory(null);
+  };
+
+  // Delete
+  const handleDelete = async (id: number) => {
+    try {
+      const res = await fetch(`${DELETE_CATEGORY}/${id}`, {
+        method: "DELETE",
+      });
+      if (res.ok) {
+        message.success("Xóa danh mục thành công");
+        fetchCategories();
+      } else {
+        message.error("Xóa danh mục thất bại");
+      }
+    } catch (error) {
+      message.error("Lỗi khi xóa danh mục");
+      console.log("Failed to delete category:", error);
+    }
   };
 
   const columns = [
@@ -107,7 +128,7 @@ export default function CategoryList() {
           >
             Sửa
           </Button>
-          <Button type="primary" danger onClick={() => {}}>
+          <Button type="primary" danger onClick={() => handleDelete(record.id)}>
             Xóa
           </Button>
         </div>
