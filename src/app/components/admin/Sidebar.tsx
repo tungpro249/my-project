@@ -6,11 +6,12 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
 const links = [
-  { href: "/admin", label: "Dashboard" },
-  { href: "/admin/blog", label: "Bài viết" },
-  { href: "/admin/blog/new", label: "Tạo bài viết" },
-  { href: "/admin/category", label: "Danh mục" },
-  { href: "/admin/settings", label: "Cài đặt" },
+  { href: "/admin", label: "Dashboard", icon: "📊" },
+  { href: "/admin/blog", label: "Bài viết", icon: "📝" },
+  { href: "/admin/blog/new", label: "Tạo bài viết", icon: "✍️" },
+  { href: "/admin/category", label: "Danh mục", icon: "🗂️" },
+  { href: "/admin/settings", label: "Cài đặt", icon: "⚙️" },
+  { href: "/", label: "Trang chủ", icon: "🏠" },
 ];
 
 export default function Sidebar() {
@@ -19,7 +20,7 @@ export default function Sidebar() {
   return (
     <aside className="w-64 bg-white shadow-md">
       <nav className="p-4 space-y-2">
-        {links.map(({ href, label }) => (
+        {links.map(({ href, label, icon }) => (
           <Link
             key={href}
             href={href}
@@ -28,7 +29,7 @@ export default function Sidebar() {
               pathname === href && "bg-gray-200 font-semibold",
             )}
           >
-            {label}
+            {icon} {label}
           </Link>
         ))}
       </nav>

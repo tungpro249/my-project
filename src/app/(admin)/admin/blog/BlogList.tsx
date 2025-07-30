@@ -5,11 +5,7 @@ import { useState } from "react";
 import { Button, Table, message } from "antd";
 import Link from "next/link";
 
-export default function BlogList({
-  initialPosts,
-}: {
-  initialPosts: any[];
-}) {
+export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
   const [posts, setPosts] = useState<any>(initialPosts);
 
   const handleDelete = async (id: string) => {
@@ -17,7 +13,7 @@ export default function BlogList({
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/post/${id}`,
       {
         method: "DELETE",
-      }
+      },
     );
     if (res.ok) {
       message.success("Xóa bài viết thành công");
