@@ -4,6 +4,7 @@ import { Layout, Menu } from "antd";
 import { useRouter, usePathname } from "next/navigation";
 import { useLoadingStore } from "@/app/stores/useLoadingStore";
 import { items } from "@/app/screen";
+import ToggleDarkmode from "../ui/ToggleDarkmode";
 
 const { Header } = Layout;
 
@@ -64,6 +65,7 @@ export function HeaderPage() {
           onClick={handleMenuClick}
           style={{ flex: 1, minWidth: 0 }}
         />
+        <ToggleDarkmode />
       </Header>
       {/* <Content style={{ padding: "0 48px" }}>
         <Breadcrumb style={{ margin: "16px 0" }}>

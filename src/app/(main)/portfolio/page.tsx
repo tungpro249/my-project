@@ -17,7 +17,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const { Content } = Layout;
-const { Title, Paragraph, Link } = Typography;
+const { Link } = Typography;
 
 const skills = [
   { name: "React", icon: <FaReact /> },
@@ -38,7 +38,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen">
+    <div className="bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen text-gray-900 dark:text-gray-100">
       <a
         href="/assets/Doan-Thanh-Tung-cv.pdf"
         download
@@ -59,10 +59,10 @@ export default function Portfolio() {
             {/* <div className="absolute w-[207px] ml-[10px] inset-0 rounded-full border-5 border-blue-300 opacity-0 group-hover:opacity-100 animate-pulse transition duration-300"></div> */}
           </Col>
           <Col xs={24} md={16}>
-            <Title level={2} data-aos="fade-right" className="text-blue-700">
+            <h2 data-aos="fade-right" className="dark:text-blue-400 text-4xl font-bold mb-3">
               Đoàn Thanh Tùng
-            </Title>
-            <Paragraph data-aos="fade-right" data-aos-delay="200">
+            </h2>
+            <p data-aos="fade-right" data-aos-delay="200"  className="text-gray-700 dark:text-gray-300 mb-3">
               Tôi là một lập trình viên Frontend với 2 năm kinh nghiệm phát
               triển ứng dụng bằng React và 1 năm kinh nghiệm với Vue.js. Tôi
               thành thạo các thư viện giao diện như Ant Design, Material UI và
@@ -70,7 +70,7 @@ export default function Portfolio() {
               và TypeScript. Ngoài ra, tôi cũng có kinh nghiệm tối ưu hiệu suất
               web, responsive design và làm việc nhóm trong môi trường
               Agile/Scrum.
-            </Paragraph>
+            </p>
             <Space size="middle" data-aos="fade-right" data-aos-delay="300">
               <Link href="https://github.com/tungpro249" target="_blank">
                 <GithubOutlined className="text-2xl hover:text-blue-500 transition duration-300" />
@@ -90,7 +90,7 @@ export default function Portfolio() {
 
         <div className="mt-12">
           <h2
-            className="text-3xl font-bold mb-6 text-gray-800"
+            className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100"
             data-aos="fade-up"
           >
             Kinh nghiệm làm việc
@@ -101,53 +101,53 @@ export default function Portfolio() {
               items={[
                 {
                   label: (
-                    <span className="text-gray-500 font-medium">
+                    <span className="text-gray-500 dark:text-gray-400 font-medium">
                       2022-04-01
                     </span>
                   ),
                   children: (
-                    <p className="text-blue-600 font-semibold">
+                    <p className="text-blue-600 font-semibold dark:text-blue-400">
                       Thực tập tại Comit
                     </p>
                   ),
                 },
                 {
                   label: (
-                    <span className="text-gray-500 font-medium">
+                    <span className="text-gray-500 dark:text-gray-400 font-medium">
                       2022-09-01
                     </span>
                   ),
                   children: (
-                    <p className="text-blue-600 font-semibold">
+                    <p className="text-blue-600 font-semibold dark:text-blue-400">
                       Trở thành nhân viên chính thức
                     </p>
                   ),
                 },
                 {
                   children: (
-                    <p className="text-blue-600 font-semibold">
+                    <p className="text-blue-600 font-semibold dark:text-blue-400">
                       Frontend Developer
                     </p>
                   ),
                 },
                 {
                   label: (
-                    <span className="text-gray-500 font-medium">
+                    <span className="text-gray-500 dark:text-gray-400 font-medium">
                       01-06-2024
                     </span>
                   ),
                   children: (
-                    <p className="text-blue-600 font-semibold">VDTSol</p>
+                    <p className="text-blue-600 font-semibold dark:text-blue-400">VDTSol</p>
                   ),
                 },
                 {
                   label: (
-                    <span className="text-gray-500 font-medium">
+                    <span className="text-gray-500 dark:text-gray-400 font-medium">
                       01-01-2025
                     </span>
                   ),
                   children: (
-                    <p className="text-blue-600 font-semibold">
+                    <p className="text-blue-600 font-semibold dark:text-blue-400">
                       Công ty cổ phần học viện Minh Trí Thành
                     </p>
                   ),
@@ -212,14 +212,14 @@ export default function Portfolio() {
         </div>
 
         <div className="mt-12">
-          <h2 className="text-3xl font-semibold mb-6" data-aos="fade-up">
+          <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100" data-aos="fade-up">
             Kỹ năng
           </h2>
           <Row gutter={[16, 16]}>
             {skills.map((skill, index) => (
               <Col xs={12} md={8} key={skill.name}>
                 <Card
-                  className="hover:scale-105 hover:shadow-lg transition duration-300"
+                  className="hover:scale-105 hover:shadow-lg transition duration-300 bg-white dark:bg-gray-800 dark:text-gray-100"
                   data-aos="zoom-in"
                   data-aos-delay={100 + index * 100}
                 >
@@ -234,7 +234,7 @@ export default function Portfolio() {
         </div>
 
         <div className="mt-12">
-          <h2 className="text-3xl font-semibold mb-6" data-aos="fade-up">
+          <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100" data-aos="fade-up">
             Dự án
           </h2>
           <Row gutter={[16, 16]} className="p-4">
@@ -289,7 +289,7 @@ export default function Portfolio() {
 
         <div className="mt-12">
           <h2
-            className="text-3xl font-bold text-gray-800 mb-6"
+            className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100"
             data-aos="fade-up"
           >
             Học vấn
