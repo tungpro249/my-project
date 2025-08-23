@@ -5,12 +5,17 @@ import { Post } from "@/app/services/posts/post.type";
 
 async function getPostBySlug(id: string): Promise<Post | null> {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/post/${id}`,
-      {
-        cache: "no-store",
-      },
-    );
+    const baseUrl =
+      process.env.API_BASE_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL;
+    if (!baseUrl) {
+      console.error(
+        "Missing API base URL (set API_BASE_URL or NEXT_PUBLIC_API_BASE_URL)",
+      );
+      return null;
+    }
+    const res = await fetch(`${baseUrl}/post/${encodeURIComponent(id)}`, {
+      cache: "no-store",
+    });
 
     if (!res.ok) {
       console.error(`API error: ${res.status} ${res.statusText}`);
@@ -32,14 +37,12 @@ async function getPostBySlug(id: string): Promise<Post | null> {
   }
 }
 
-// Updated Props type to include Promise for params
 type Props = {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 };
 
 export default async function BlogDetailPage({ params }: Props) {
-  // Await the params to resolve the Promise
-  const { id } = await params;
+  const { id } = params;
   const post = await getPostBySlug(id);
 
   if (!post) return notFound();

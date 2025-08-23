@@ -1,11 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { Layout, Avatar, Typography, Row, Col, Card, Space } from "antd";
-import {
-  GithubOutlined,
-  MailOutlined,
-  LinkedinOutlined,
-} from "@ant-design/icons";
+import { GithubOutlined, LinkedinOutlined } from "@ant-design/icons";
 import { Timeline } from "antd";
 import { FaReact } from "react-icons/fa";
 import { RiNextjsFill } from "react-icons/ri";
@@ -14,7 +10,6 @@ import { SiTypescript } from "react-icons/si";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { FaNodeJs } from "react-icons/fa";
 import AOS from "aos";
-import "aos/dist/aos.css";
 
 const { Content } = Layout;
 const { Link } = Typography;
@@ -78,16 +73,21 @@ export default function Portfolio() {
               web, responsive design và làm việc nhóm trong môi trường
               Agile/Scrum.
             </p>
-            <Space size="middle" data-aos="fade-right" data-aos-delay="300">
-              <Link href="https://github.com/tungpro249" target="_blank">
+            <Space size="middle">
+              <Link
+                href="https://github.com/tungpro249"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Mở hồ sơ GitHub của Đoàn Thanh Tùng"
+              >
                 <GithubOutlined className="text-2xl hover:text-blue-500 transition duration-300" />
               </Link>
-              <Link href="mailto:tungt392@gmail.com">
-                <MailOutlined className="text-2xl hover:text-blue-500 transition duration-300" />
-              </Link>
+
               <Link
                 href="https://linkedin.com/in/t%C3%B9ng-%C4%91o%C3%A0n-3b1292236"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Mở hồ sơ LinkedIn của Đoàn Thanh Tùng"
               >
                 <LinkedinOutlined className="text-2xl hover:text-blue-500 transition duration-300" />
               </Link>

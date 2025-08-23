@@ -2,8 +2,9 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Table, message } from "antd";
+import { Button, Popconfirm, Table, message } from "antd";
 import Link from "next/link";
+import { Post } from "@/app/services/posts/post.type";
 
 export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
   const [posts, setPosts] = useState<any>(initialPosts);
@@ -22,12 +23,11 @@ export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
       message.error("Xóa thất bại");
     }
   };
-
   const columns = [
     {
       title: "STT",
-      key: "id",
-      render: (index: number) => index + 1,
+      key: "stt",
+      render: (_: unknown, __: Post, index: number) => index + 1,
     },
     {
       title: "Tiêu đề",
@@ -36,16 +36,20 @@ export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
     },
     {
       title: "Hành động",
-      dataIndex: "actions",
       key: "actions",
-      render: (record: any) => (
+      render: (_: unknown, record: any) => (
         <div className="flex gap-2">
           <Link href={`/post/${record.id}`}>
             <Button type="primary">Sửa</Button>
           </Link>
-          <Button danger onClick={() => handleDelete(record.id)}>
-            Xóa
-          </Button>
+          <Popconfirm
+            title="Xác nhận xóa"
+            okText="Xóa"
+            cancelText="Hủy"
+            onConfirm={() => handleDelete(record.id)}
+          >
+            <Button danger>Xóa</Button>
+          </Popconfirm>
         </div>
       ),
     },
