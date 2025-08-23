@@ -59,10 +59,17 @@ export default function Portfolio() {
             {/* <div className="absolute w-[207px] ml-[10px] inset-0 rounded-full border-5 border-blue-300 opacity-0 group-hover:opacity-100 animate-pulse transition duration-300"></div> */}
           </Col>
           <Col xs={24} md={16}>
-            <h2 data-aos="fade-right" className="dark:text-blue-400 text-4xl font-bold mb-3">
+            <h2
+              data-aos="fade-right"
+              className="dark:text-blue-400 text-4xl font-bold mb-3"
+            >
               Đoàn Thanh Tùng
             </h2>
-            <p data-aos="fade-right" data-aos-delay="200"  className="text-gray-700 dark:text-gray-300 mb-3">
+            <p
+              data-aos="fade-right"
+              data-aos-delay="200"
+              className="text-gray-700 dark:text-gray-300 mb-3"
+            >
               Tôi là một lập trình viên Frontend với 2 năm kinh nghiệm phát
               triển ứng dụng bằng React và 1 năm kinh nghiệm với Vue.js. Tôi
               thành thạo các thư viện giao diện như Ant Design, Material UI và
@@ -137,7 +144,9 @@ export default function Portfolio() {
                     </span>
                   ),
                   children: (
-                    <p className="text-blue-600 font-semibold dark:text-blue-400">VDTSol</p>
+                    <p className="text-blue-600 font-semibold dark:text-blue-400">
+                      VDTSol
+                    </p>
                   ),
                 },
                 {
@@ -212,7 +221,10 @@ export default function Portfolio() {
         </div>
 
         <div className="mt-12">
-          <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100" data-aos="fade-up">
+          <h2
+            className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100"
+            data-aos="fade-up"
+          >
             Kỹ năng
           </h2>
           <Row gutter={[16, 16]}>
@@ -234,7 +246,10 @@ export default function Portfolio() {
         </div>
 
         <div className="mt-12">
-          <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100" data-aos="fade-up">
+          <h2
+            className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100"
+            data-aos="fade-up"
+          >
             Dự án
           </h2>
           <Row gutter={[16, 16]} className="p-4">

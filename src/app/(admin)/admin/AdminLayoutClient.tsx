@@ -1,9 +1,9 @@
 // app/admin/AdminLayoutClient.tsx
-'use client';
+"use client";
 
-import { useRouter, usePathname } from 'next/navigation';
-import { useEffect } from 'react';
-import Sidebar from '@/app/components/admin/Sidebar';
+import { useRouter, usePathname } from "next/navigation";
+import { useEffect } from "react";
+import Sidebar from "@/app/components/admin/Sidebar";
 
 export default function AdminLayoutClient({
   children,
@@ -14,9 +14,9 @@ export default function AdminLayoutClient({
   const pathname = usePathname();
 
   useEffect(() => {
-    const isAuth = document.cookie.includes('admin-auth=true');
+    const isAuth = document.cookie.includes("admin-auth=true");
     if (!isAuth) {
-      router.push('/admin-login');
+      router.push("/admin-login");
     }
   }, [pathname]);
 

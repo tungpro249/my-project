@@ -27,7 +27,7 @@ export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
     {
       title: "STT",
       key: "id",
-      render: (_, record, index) => index + 1,
+      render: (index: number) => index + 1,
     },
     {
       title: "Tiêu đề",
@@ -38,7 +38,7 @@ export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
       title: "Hành động",
       dataIndex: "actions",
       key: "actions",
-      render: (_, record) => (
+      render: (record: any) => (
         <div className="flex gap-2">
           <Link href={`/post/${record.id}`}>
             <Button type="primary">Sửa</Button>
