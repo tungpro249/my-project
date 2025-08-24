@@ -1,5 +1,4 @@
-"use client";
-import { Layout, Row, Col, Typography, Space, Divider } from "antd";
+import { Row, Col, Space, Divider } from "antd";
 import {
   FacebookOutlined,
   TwitterOutlined,
@@ -8,104 +7,96 @@ import {
 } from "@ant-design/icons";
 import Link from "next/link";
 
-const { Footer } = Layout;
-const { Text } = Typography;
-
 export function FooterPage() {
   return (
-    <Footer className="!bg-[#001529] text-white p-[30px 50px]">
-      <Row gutter={16}>
-        {/* Logo or Text */}
-        <Col span={24} style={{ textAlign: "center", marginBottom: "20px" }}>
-          <Text className="!text-white text-2xl font-bold">
+    <footer className="bg-white dark:bg-gray-900 py-12 px-6">
+      <Row gutter={[24, 24]} justify="center">
+        {/* Logo / Title */}
+        <Col span={24} className="text-center">
+          <div className="text-2xl font-bold text-gray-800 dark:text-white">
             Đoàn Thanh Tùng Blog
-          </Text>
+          </div>
         </Col>
 
         {/* Navigation Links */}
         <Col xs={24} sm={12} md={8} lg={6}>
-          <div style={{ textAlign: "center" }}>
-            <Text strong className="!text-white" style={{ fontSize: "16px" }}>
+          <div className="text-center">
+            <h3 className="text-gray-800 dark:text-white text-lg font-semibold">
               Liên kết
-            </Text>
-            <div style={{ marginTop: "10px" }}>
-              <Space direction="vertical">
-                <Link href={"/"}>
-                  <Text style={{ color: "#ccc" }}>Trang chủ</Text>
-                </Link>
-                <Link href={"/portfolio"}>
-                  <Text style={{ color: "#ccc" }}>Giới thiệu</Text>
-                </Link>
-                <Link href={"/blog"}>
-                  <Text style={{ color: "#ccc" }}>Bài viết</Text>
-                </Link>
-              </Space>
-            </div>
+            </h3>
+            <Space direction="vertical" className="mt-4">
+              <Link
+                href="/"
+                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              >
+                Trang chủ
+              </Link>
+              <Link
+                href="/portfolio"
+                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              >
+                Giới thiệu
+              </Link>
+              <Link
+                href="/blog"
+                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              >
+                Bài viết
+              </Link>
+            </Space>
           </div>
         </Col>
 
-        {/* Social Media Icons */}
+        {/* Social Media */}
         <Col xs={24} sm={12} md={8} lg={6}>
-          <div style={{ textAlign: "center" }}>
-            <Text strong style={{ fontSize: "16px", color: "white" }}>
+          <div className="text-center">
+            <h3 className="text-gray-800 dark:text-white text-lg font-semibold">
               Theo dõi tôi
-            </Text>
-            <div style={{ marginTop: "10px" }}>
-              <Space size="large">
-                <FacebookOutlined
-                  style={{ fontSize: "20px", color: "white" }}
-                />
-                <TwitterOutlined style={{ fontSize: "20px", color: "white" }} />
-                <InstagramOutlined
-                  style={{ fontSize: "20px", color: "white" }}
-                />
-                <GithubOutlined style={{ fontSize: "20px", color: "white" }} />
-              </Space>
-            </div>
+            </h3>
+            <Space size="large" className="mt-4">
+              <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                <FacebookOutlined style={{ fontSize: "20px" }} />
+              </a>
+              <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-sky-500 dark:hover:text-sky-400">
+                <TwitterOutlined style={{ fontSize: "20px" }} />
+              </a>
+              <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400">
+                <InstagramOutlined style={{ fontSize: "20px" }} />
+              </a>
+              <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-400">
+                <GithubOutlined style={{ fontSize: "20px" }} />
+              </a>
+            </Space>
           </div>
         </Col>
 
+        {/* Email Subscription */}
         <Col xs={24} sm={12} md={8} lg={6}>
-          <div style={{ textAlign: "center" }}>
-            <Text strong style={{ fontSize: "16px", color: "white" }}>
+          <div className="text-center">
+            <h3 className="text-gray-800 dark:text-white text-lg font-semibold">
               Nhận email thông báo
-            </Text>
-            <div style={{ marginTop: "10px" }}>
-              <Space>
-                <input
-                  type="email"
-                  placeholder="Nhập địa chỉ email"
-                  style={{
-                    padding: "5px",
-                    borderRadius: "5px",
-                    width: "200px",
-                    backgroundColor: "white",
-                    outline: "none",
-                  }}
-                />
-                <button
-                  style={{
-                    padding: "5px 10px",
-                    borderRadius: "5px",
-                    backgroundColor: "#1890ff",
-                    color: "white",
-                  }}
-                >
-                  Gửi
-                </button>
-              </Space>
+            </h3>
+            <div className="mt-4 flex justify-center">
+              <input
+                type="email"
+                placeholder="Nhập email"
+                className="px-3 py-2 w-48 rounded-l-md focus:outline-none text-gray-800 dark:text-white bg-gray-100 dark:bg-gray-800"
+              />
+              <button className="px-4 py-2 bg-indigo-600 text-white rounded-r-md hover:bg-indigo-700 transition">
+                Gửi
+              </button>
             </div>
           </div>
         </Col>
 
         {/* Copyright */}
-        <Col span={24} style={{ textAlign: "center", marginTop: "30px" }}>
-          <Divider style={{ borderColor: "#444" }} />
-          <Text style={{ color: "#ccc" }}>
+        <Col span={24} className="text-center mt-8">
+          <Divider className="border-gray-200 dark:border-gray-700" />
+          <p className="text-gray-500 dark:text-gray-400 text-sm">
             © 2025 Đoàn Thanh Tùng. All rights reserved.
-          </Text>
+          </p>
         </Col>
       </Row>
-    </Footer>
+    </footer>
   );
 }

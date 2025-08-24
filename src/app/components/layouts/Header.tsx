@@ -1,77 +1,67 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { Layout, Menu } from "antd";
-import { useRouter, usePathname } from "next/navigation";
-import { useLoadingStore } from "@/app/stores/useLoadingStore";
 import { items } from "@/app/screen";
-import ToggleDarkmode from "../ui/ToggleDarkmode";
-
-const { Header } = Layout;
+import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 export function HeaderPage() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const [isMounted, setIsMounted] = useState(false);
-  const { show, hide } = useLoadingStore();
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  const handleMenuClick = (e: any) => {
-    const selectedItem = items.find((item) => item.key === e.key);
-    if (selectedItem && isMounted && pathname !== selectedItem.path) {
-      show();
-      router.push(selectedItem.path);
-    }
-  };
-  useEffect(() => {
-    // Mỗi khi pathname thay đổi là route đã xong -> tắt loading
-    hide();
-  }, [pathname]);
-
-  if (!isMounted) {
-    return null;
-  }
-
-  // const getBreadcrumbItems = () => {
-  //   const paths = pathname.split("/").filter(Boolean);
-  //   return paths.map((segment, index) => {
-  //     return (
-  //       <Breadcrumb.Item key={index}>
-  //         {segment.charAt(0).toUpperCase() + segment.slice(1)}
-  //       </Breadcrumb.Item>
-  //     );
-  //   });
-  // };
-
   return (
-    <>
-      <Header
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 3,
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        {/* <div className="demo-logo" style={{ flex: 1 }} /> */}
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          items={items}
-          onClick={handleMenuClick}
-          style={{ flex: 1, minWidth: 0 }}
-        />
-        <ToggleDarkmode />
-      </Header>
-      {/* <Content style={{ padding: "0 48px" }}>
-        <Breadcrumb style={{ margin: "16px 0" }}>
-          {getBreadcrumbItems()}
-        </Breadcrumb>
-      </Content> */}
-    </>
+    <header className="bg-white dark:bg-gray-900 shadow sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2">
+            <svg
+              className="w-7 h-7 text-indigo-600 dark:text-indigo-400"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fillRule="evenodd"
+                d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <span className="font-bold text-lg text-gray-800 dark:text-white">
+              Bò Sữa
+            </span>
+          </Link>
+
+          {/* Navigation */}
+          <nav className="hidden md:flex space-x-6">
+            {items.map((item) => (
+              <Link
+                key={item.key}
+                href={item.path}
+                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right actions */}
+          <div className="flex items-center gap-3">
+            {/* Theme toggle */}
+            <ThemeToggle />
+
+            {/* Mobile menu button */}
+            <button className="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+              <svg
+                className="w-6 h-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                viewBox="0 0 24 24"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
   );
 }

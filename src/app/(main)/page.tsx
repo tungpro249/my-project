@@ -1,11 +1,4 @@
-import React from "react";
-import { Layout } from "antd";
-import HomePage from "./home/page";
 
-export default function App() {
-  return (
-    <Layout>
-      <HomePage />
-    </Layout>
-  );
+export default async function Home() {
+  return <div>Home</div>;
 }
