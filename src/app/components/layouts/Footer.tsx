@@ -54,16 +54,28 @@ export function FooterPage() {
               Theo dõi tôi
             </h3>
             <Space size="large" className="mt-4">
-              <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+              <a
+                href="#"
+                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+              >
                 <FacebookOutlined style={{ fontSize: "20px" }} />
               </a>
-              <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-sky-500 dark:hover:text-sky-400">
+              <a
+                href="#"
+                className="text-gray-600 dark:text-gray-300 hover:text-sky-500 dark:hover:text-sky-400"
+              >
                 <TwitterOutlined style={{ fontSize: "20px" }} />
               </a>
-              <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400">
+              <a
+                href="#"
+                className="text-gray-600 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400"
+              >
                 <InstagramOutlined style={{ fontSize: "20px" }} />
               </a>
-              <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-400">
+              <a
+                href="#"
+                className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-400"
+              >
                 <GithubOutlined style={{ fontSize: "20px" }} />
               </a>
             </Space>
