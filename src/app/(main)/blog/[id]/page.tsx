@@ -9,7 +9,7 @@ async function getPostBySlug(id: string): Promise<Post | null> {
       process.env.API_BASE_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL;
     if (!baseUrl) {
       console.error(
-        "Missing API base URL (set API_BASE_URL or NEXT_PUBLIC_API_BASE_URL)"
+        "Missing API base URL (set API_BASE_URL or NEXT_PUBLIC_API_BASE_URL)",
       );
       return null;
     }
@@ -42,6 +42,7 @@ export default async function BlogDetailPage({
 }: {
   params: { id: string };
 }) {
+  /* @next-codemod-ignore */
   const { id } = await params;
   const post = await getPostBySlug(id);
 

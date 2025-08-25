@@ -50,10 +50,6 @@ const SettingsForm = () => {
           <Input placeholder="https://facebook.com/yourpage" />
         </Form.Item>
 
-        <Form.Item name="twitter" label="Liên kết Twitter">
-          <Input placeholder="https://twitter.com/yourprofile" />
-        </Form.Item>
-
         <Form.Item
           name="contactEmail"
           label="Email liên hệ"

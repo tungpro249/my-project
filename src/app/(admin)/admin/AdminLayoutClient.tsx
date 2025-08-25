@@ -1,8 +1,8 @@
 // app/admin/AdminLayoutClient.tsx
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
-import { useEffect, type ReactNode } from "react";
+// import { useRouter, usePathname } from "next/navigation";
+import { type ReactNode } from "react";
 import Sidebar from "@/app/components/admin/Sidebar";
 
 export default function AdminLayoutClient({
@@ -10,15 +10,15 @@ export default function AdminLayoutClient({
 }: {
   children: ReactNode;
 }) {
-  const router = useRouter();
-  const pathname = usePathname();
+  // const router = useRouter();
+  // const pathname = usePathname();
 
-  useEffect(() => {
-    const isAuth = document.cookie.includes("admin-auth=true");
-    if (!isAuth) {
-      router.push("/admin-login");
-    }
-  }, [pathname]);
+  // useEffect(() => {
+  //   const isAuth = document.cookie.includes("admin-auth=true");
+  //   if (!isAuth) {
+  //     router.push("/admin-login");
+  //   }
+  // }, [pathname]);
 
   return (
     <div className="flex min-h-screen">

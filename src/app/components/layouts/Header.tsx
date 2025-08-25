@@ -41,6 +41,12 @@ export function HeaderPage() {
 
           {/* Right actions */}
           <div className="flex items-center gap-3">
+            <Link
+              href="/login"
+              className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+              Đăng nhập/Đăng ký
+            </Link>
             {/* Theme toggle */}
             <ThemeToggle />
 
