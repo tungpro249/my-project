@@ -42,7 +42,7 @@ export default async function BlogDetailPage({
 }: {
   params: { id: string };
 }) {
-  const { id } = params;
+  const { id } = await params;
   const post = await getPostBySlug(id);
 
   if (!post) return notFound();
