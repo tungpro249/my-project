@@ -37,12 +37,7 @@ async function getPostBySlug(id: string): Promise<Post | null> {
   }
 }
 
-export default async function BlogDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  /* @next-codemod-ignore */
+export default async function BlogDetailPage({ params }: any) {
   const { id } = await params;
   const post = await getPostBySlug(id);
 
