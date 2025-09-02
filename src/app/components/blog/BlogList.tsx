@@ -1,4 +1,3 @@
-// app/admin/blog/BlogList.tsx (Client Component)
 "use client";
 
 import { useState } from "react";
