@@ -9,7 +9,7 @@ async function getPostBySlug(id: string): Promise<Post | null> {
       process.env.API_BASE_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL;
     if (!baseUrl) {
       console.error(
-        "Missing API base URL (set API_BASE_URL or NEXT_PUBLIC_API_BASE_URL)",
+        "Missing API base URL (set API_BASE_URL or NEXT_PUBLIC_API_BASE_URL)"
       );
       return null;
     }
@@ -47,10 +47,14 @@ export default async function BlogDetailPage({ params }: any) {
 
   return (
     <>
-      <div className="max-w-6xl mx-auto px-4 py-10">
-        <h1 className="text-3xl font-bold mb-6">{post.title}</h1>
-        <div className="mt-6 prose prose-lg prose-slate">
-          <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <div className="max-w-6xl mx-auto px-4 py-10">
+          <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+            {post.title}
+          </h1>
+          <div className="mt-6 prose prose-lg prose-slate dark:prose-invert max-w-none dark:text-[#fff]">
+            <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
+          </div>
         </div>
       </div>
       <PostSimilar />

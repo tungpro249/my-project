@@ -33,7 +33,10 @@ export default function Pagination({ total, pageSize = 10 }: PaginationProps) {
   };
 
   return (
-    <nav aria-label="Page navigation" className="flex mt-8">
+    <nav
+      aria-label="Page navigation"
+      className="flex mt-8 p-2 rounded-lg bg-white dark:bg-gray-900 transition-colors duration-300"
+    >
       <AntdPagination
         current={currentPage}
         total={total}
@@ -42,7 +45,7 @@ export default function Pagination({ total, pageSize = 10 }: PaginationProps) {
         onShowSizeChange={handlePageSizeChange}
         showSizeChanger
         showQuickJumper
-        showTotal={(total) => `Tổng ${total} bản ghi`}
+        showTotal={(total) => <div className="dark: text-gray-100">Tổng {total} bản ghi</div>}
       />
     </nav>
   );

@@ -4,11 +4,11 @@ export const items = [
     label: "Trang chủ",
     path: "/",
   },
-  // {
-  //   key: "2",
-  //   label: "Blog",
-  //   path: "/blog",
-  // },
+  {
+    key: "2",
+    label: "Cửa hàng",
+    path: "/store",
+  },
   {
     key: "2",
     label: "Giới thiệu",

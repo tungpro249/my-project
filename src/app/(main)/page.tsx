@@ -37,7 +37,7 @@ export default async function Home({
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 bg-white">
+    <div className="max-w-6xl mx-auto px-4 py-8 bg-white dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
       <p className="text-center mb-8 !text-3xl !font-bold">
         Danh sách bài viết
       </p>
@@ -55,15 +55,16 @@ export default async function Home({
                     <span className="!text-xl !font-semibold">
                       {post.title}
                     </span>
-                    <span className="text-gray-500 text-sm">
-                      {" "}
+                    <span className="text-gray-500 text-sm dark:text-gray-400">
                       {dayjs(post.created_at).format("DD/MM/YYYY HH:mm")}
                     </span>
                   </div>
                 }
-                className="shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300"
+                className="shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300 
+                         dark:bg-gray-800 dark:border-gray-700"
               >
                 <div
+                  className="prose dark:prose-invert"
                   dangerouslySetInnerHTML={{ __html: post.short_description }}
                 />
               </Card>
