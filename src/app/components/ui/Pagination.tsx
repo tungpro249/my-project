@@ -45,7 +45,9 @@ export default function Pagination({ total, pageSize = 10 }: PaginationProps) {
         onShowSizeChange={handlePageSizeChange}
         showSizeChanger
         showQuickJumper
-        showTotal={(total) => <div className="dark: text-gray-100">Tổng {total} bản ghi</div>}
+        showTotal={(total) => (
+          <div className="dark: text-gray-100">Tổng {total} bản ghi</div>
+        )}
       />
     </nav>
   );

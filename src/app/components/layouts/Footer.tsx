@@ -5,6 +5,7 @@ import {
   GithubOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
+import { NotifyEmail } from "../ui/NotifyEmail";
 
 export function FooterPage() {
   return (
@@ -77,21 +78,7 @@ export function FooterPage() {
 
         {/* Email Subscription */}
         <Col xs={24} sm={12} md={8} lg={6}>
-          <div className="text-center">
-            <h3 className="text-gray-800 dark:text-white text-lg font-semibold">
-              Nhận email thông báo
-            </h3>
-            <div className="mt-4 flex justify-center">
-              <input
-                type="email"
-                placeholder="Nhập email"
-                className="px-3 py-2 w-48 rounded-l-md focus:outline-none text-gray-800 dark:text-white bg-gray-100 dark:bg-gray-800"
-              />
-              <button className="px-4 py-2 bg-indigo-600 text-white rounded-r-md hover:bg-indigo-700 transition">
-                Gửi
-              </button>
-            </div>
-          </div>
+          <NotifyEmail />
         </Col>
 
         {/* Copyright */}

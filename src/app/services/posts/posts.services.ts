@@ -49,7 +49,7 @@ export async function createPosts({
   url.searchParams.append("page", page.toString());
   url.searchParams.append("pageSize", pageSize.toString());
 
-  const res = await fetch(url.toString(), {
+  const res = await fetch(url, {
     cache: "no-store",
   });
 

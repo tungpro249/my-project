@@ -8,9 +8,24 @@ type Product = {
 };
 
 const products: Product[] = [
-  { id: 1, name: "Website Landing Page", price: 199, image: "https://picsum.photos/400/300?random=1" },
-  { id: 2, name: "Portfolio Template", price: 99, image: "https://picsum.photos/400/300?random=2" },
-  { id: 3, name: "E-commerce UI Kit", price: 149, image: "https://picsum.photos/400/300?random=3" },
+  {
+    id: 1,
+    name: "Website Landing Page",
+    price: 199,
+    image: "https://picsum.photos/400/300?random=1",
+  },
+  {
+    id: 2,
+    name: "Portfolio Template",
+    price: 99,
+    image: "https://picsum.photos/400/300?random=2",
+  },
+  {
+    id: 3,
+    name: "E-commerce UI Kit",
+    price: 149,
+    image: "https://picsum.photos/400/300?random=3",
+  },
 ];
 
 export default function ProductList() {
