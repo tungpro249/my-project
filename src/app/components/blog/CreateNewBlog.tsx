@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Editor from "@/app/components/Editor";
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("@/app/components/Editor"), { ssr: false });
 export default function CreateNewBlog() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
