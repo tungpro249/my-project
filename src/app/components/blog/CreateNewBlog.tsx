@@ -2,22 +2,24 @@
 
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
+import { createPost } from "@/app/services/posts/posts.services";
 const Editor = dynamic(() => import("@/app/components/Editor"), { ssr: false });
 export default function CreateNewBlog() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const newPost = {
       title,
       content,
+      category_id: "1",
     };
 
-    console.log("Submit post:", newPost);
-    // TODO: gọi API POST lên server
+    const response = await createPost(newPost);
+    console.log(response);
   };
 
   return (
@@ -70,6 +72,7 @@ export default function CreateNewBlog() {
         <div className="flex justify-end">
           <button
             type="submit"
+            onClick={handleSubmit}
             className="px-5 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 focus:outline-none"
           >
             Đăng bài

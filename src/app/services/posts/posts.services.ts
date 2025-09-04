@@ -32,38 +32,26 @@ export async function fetchPosts({
   };
 }
 
-export async function createPosts({
-  key_search = "",
-  page = 1,
-  pageSize = 10,
-}: FetchPostsParams) {
+export async function createPost(postData: {
+  title: string;
+  description?: string;
+  content: string;
+  category_id: string;
+}) {
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-  if (!baseUrl) {
-    throw new Error("NEXT_PUBLIC_API_BASE_URL is not defined");
-  }
+  if (!baseUrl) throw new Error("NEXT_PUBLIC_API_BASE_URL is not defined");
 
-  const url = new URL(`${baseUrl}/posts`);
-  if (key_search) {
-    url.searchParams.append("key_search", key_search);
-  }
-  url.searchParams.append("page", page.toString());
-  url.searchParams.append("pageSize", pageSize.toString());
-
-  const res = await fetch(url, {
-    cache: "no-store",
+  const res = await fetch(`${baseUrl}/post`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postData),
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch posts");
+    throw new Error("Failed to create post");
   }
 
-  const data = await res.json();
-  if (!data.data || typeof data.total !== "number") {
-    throw new Error("Invalid response format");
-  }
-
-  return {
-    posts: data.data as Post[],
-    total: data.total as number,
-  };
+  return res.json();
 }
