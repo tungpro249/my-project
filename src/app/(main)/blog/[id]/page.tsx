@@ -2,6 +2,21 @@ import { notFound } from "next/navigation";
 import DOMPurify from "isomorphic-dompurify"; // Use isomorphic-dompurify for SSR
 import PostSimilar from "@/app/components/PostSimilar";
 import { Post } from "@/app/services/posts/post.type";
+import { Metadata } from "next";
+
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
+  const id = (await params).id;
+  return {
+    title: `Blog ${id}`,
+    description: `${id}`,
+  };
+};
 
 async function getPostBySlug(id: string): Promise<Post | null> {
   try {

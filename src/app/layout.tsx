@@ -16,7 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "bò sữa phê cỏ",
+  title: {
+    default: "Trang blog chia sẻ kiến thức lập trình",
+    template: "%s | bò sữa phê cỏ",
+  },
   description: "Blog của tôi",
 };
 
