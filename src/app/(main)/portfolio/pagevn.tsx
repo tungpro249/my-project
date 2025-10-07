@@ -26,9 +26,9 @@ const skills = [
 export default function Portfolio() {
   useEffect(() => {
     AOS.init({
-      duration: 1000,
-      once: true,
-      mirror: false,
+      duration: 1000, // Thời gian animation
+      once: true, // Chỉ chạy một lần khi scroll
+      mirror: false, // Không lặp lại khi scroll ngược
     });
   }, []);
 
@@ -41,46 +41,44 @@ export default function Portfolio() {
         data-aos="fade-up"
         data-aos-delay="300"
       >
-        Download CV
+        Tải CV
       </a>
-
       <Content className="p-6 md:p-12 max-w-7xl mx-auto">
         <Row gutter={[32, 32]} align="middle">
           <Col xs={24} md={8} data-aos="zoom-in" data-aos-delay="100">
             <Avatar
               size={200}
               src="/assets/my-avatar.png"
-              className="border-4 border-transparent group-hover:border-blue-500 group-hover:scale-105 transition duration-300"
+              className="border-4 border-transparent group-hover:border-blue-500 group-hover:scale-105 transition duration-300 "
             />
+            {/* <div className="absolute w-[207px] ml-[10px] inset-0 rounded-full border-5 border-blue-300 opacity-0 group-hover:opacity-100 animate-pulse transition duration-300"></div> */}
           </Col>
-
           <Col xs={24} md={16}>
             <h2
               data-aos="fade-right"
               className="dark:text-blue-400 text-4xl font-bold mb-3"
             >
-              Doan Thanh Tung
+              Đoàn Thanh Tùng
             </h2>
-
             <p
               data-aos="fade-right"
               data-aos-delay="200"
               className="text-gray-700 dark:text-gray-300 mb-3"
             >
-              I’m a Frontend Developer with 2 years of experience in React and 1
-              year with Vue.js. I’m proficient in UI libraries such as Ant
-              Design, Material UI, and Bootstrap, with strong knowledge of HTML,
-              CSS, JavaScript, and TypeScript. I also have experience in web
-              performance optimization, responsive design, and teamwork in
-              Agile/Scrum environments.
+              Tôi là một lập trình viên Frontend với 2 năm kinh nghiệm phát
+              triển ứng dụng bằng React và 1 năm kinh nghiệm với Vue.js. Tôi
+              thành thạo các thư viện giao diện như Ant Design, Material UI và
+              Bootstrap, cùng với kiến thức vững chắc về HTML, CSS, JavaScript
+              và TypeScript. Ngoài ra, tôi cũng có kinh nghiệm tối ưu hiệu suất
+              web, responsive design và làm việc nhóm trong môi trường
+              Agile/Scrum.
             </p>
-
             <Space size="middle">
               <Link
                 href="https://github.com/tungpro249"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Open Doan Thanh Tung's GitHub profile"
+                aria-label="Mở hồ sơ GitHub của Đoàn Thanh Tùng"
               >
                 <GithubOutlined className="text-2xl hover:text-blue-500 transition duration-300" />
               </Link>
@@ -89,7 +87,7 @@ export default function Portfolio() {
                 href="https://linkedin.com/in/t%C3%B9ng-%C4%91o%C3%A0n-3b1292236"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Open Doan Thanh Tung's LinkedIn profile"
+                aria-label="Mở hồ sơ LinkedIn của Đoàn Thanh Tùng"
               >
                 <LinkedinOutlined className="text-2xl hover:text-blue-500 transition duration-300" />
               </Link>
@@ -97,15 +95,13 @@ export default function Portfolio() {
           </Col>
         </Row>
 
-        {/* Work Experience */}
         <div className="mt-12">
           <h2
             className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100"
             data-aos="fade-up"
           >
-            Work Experience
+            Kinh nghiệm làm việc
           </h2>
-
           <div className="mt-10" data-aos="fade-up" data-aos-delay="100">
             <Timeline
               mode="left"
@@ -118,7 +114,7 @@ export default function Portfolio() {
                   ),
                   children: (
                     <p className="text-blue-600 font-semibold dark:text-blue-400">
-                      Internship at Comit
+                      Thực tập tại Comit
                     </p>
                   ),
                 },
@@ -130,7 +126,7 @@ export default function Portfolio() {
                   ),
                   children: (
                     <p className="text-blue-600 font-semibold dark:text-blue-400">
-                      Became Full-time Employee
+                      Trở thành nhân viên chính thức
                     </p>
                   ),
                 },
@@ -144,7 +140,7 @@ export default function Portfolio() {
                 {
                   label: (
                     <span className="text-gray-500 dark:text-gray-400 font-medium">
-                      2024-06-01
+                      01-06-2024
                     </span>
                   ),
                   children: (
@@ -156,30 +152,29 @@ export default function Portfolio() {
                 {
                   label: (
                     <span className="text-gray-500 dark:text-gray-400 font-medium">
-                      2025-01-01
+                      01-01-2025
                     </span>
                   ),
                   children: (
                     <p className="text-blue-600 font-semibold dark:text-blue-400">
-                      Minh Tri Thanh Academy JSC
+                      Công ty cổ phần học viện Minh Trí Thành
                     </p>
                   ),
                 },
               ]}
             />
           </div>
-
           <div className="space-y-6">
             {[
               {
-                company: "Minh Tri Thanh Academy JSC",
-                duration: "01/2025 - Present",
+                company: "Công ty Cổ phần học viện Minh Trí Thành",
+                duration: "01/2025 - Hiện tại",
                 tasks: [
                   "Frontend Developer.",
-                  "- Build reusable components across the system.",
-                  "- Integrate and work with backend APIs.",
-                  "- Collaborate with BA and design teams.",
-                  "- Build landing pages and responsive web layouts.",
+                  "- Xây dựng các component tái sử dụng trong hệ thống.",
+                  "- Tích hợp, làm việc với backend để kết nối API.",
+                  "- Làm việc trao đổi với BA, design.",
+                  "- Xây dựng landing page, responsive web.",
                 ],
               },
               {
@@ -187,19 +182,19 @@ export default function Portfolio() {
                 duration: "06/2023 - 12/2024",
                 tasks: [
                   "Frontend Developer.",
-                  "- Build reusable UI components.",
-                  "- Work with backend APIs.",
-                  "- Support interns in the frontend team.",
+                  "- Xây dựng các component tái sử dụng trong hệ thống.",
+                  "- Tích hợp, làm việc với backend để kết nối API.",
+                  "- Support các bạn intern trong team.",
                 ],
               },
               {
                 company: "Comit Corporation",
                 duration: "04/2022 - 05/2023",
                 tasks: [
-                  "Intern → Full-time Employee.",
-                  "- Learn and assist in building internal systems.",
-                  "- Build reusable components.",
-                  "- Integrate and collaborate with backend developers.",
+                  "Thực tập sinh → Nhân viên chính thức.",
+                  "- Học hỏi và hỗ trợ xây dựng các hệ thống nội bộ.",
+                  "- Xây dựng các component tái sử dụng trong hệ thống.",
+                  "- Tích hợp, làm việc với backend để kết nối API.",
                 ],
               },
             ].map((exp, index) => (
@@ -213,23 +208,24 @@ export default function Portfolio() {
                   {exp.company}
                 </h3>
                 <p className="text-sm text-gray-500 mb-2">{exp.duration}</p>
-                <ul className="list-disc pl-5 text-gray-700">
-                  {exp.tasks.map((task, i) => (
-                    <li key={i}>{task}</li>
-                  ))}
-                </ul>
+                <p className="text-gray-700">
+                  <ul className="list-disc pl-5">
+                    {exp.tasks.map((task, i) => (
+                      <li key={i}>{task}</li>
+                    ))}
+                  </ul>
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Skills */}
         <div className="mt-12">
           <h2
             className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100"
             data-aos="fade-up"
           >
-            Skills
+            Kỹ năng
           </h2>
           <Row gutter={[16, 16]}>
             {skills.map((skill, index) => (
@@ -249,32 +245,31 @@ export default function Portfolio() {
           </Row>
         </div>
 
-        {/* Projects */}
         <div className="mt-12">
           <h2
             className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100"
             data-aos="fade-up"
           >
-            Projects
+            Dự án
           </h2>
           <Row gutter={[16, 16]} className="p-4">
             {[
               {
-                title: "AI Face Recognition Attendance System",
+                title: "Hệ thống Chấm công AI timelog",
                 description:
-                  "An AI-powered attendance system using facial recognition, reducing delays and improving monitoring for employees.",
-                tech: "React.js, Material-UI, Context, WebSocket, React Router DOM",
+                  "Chấm công bằng nhận diện khuôn mặt sử dụng trí tuệ nhân tạo, giúp người lao động giảm tải tâm lý do ùn tắc, chấm công chậm và dễ dàng theo dõi.",
+                tech: "Reactjs, Material-UI, Context, WebSocket, React Router DOM",
               },
               {
                 title: "PN-Stack",
                 description:
-                  "An ERP system providing management solutions for warehouse, employees, sales, and analytics.",
-                tech: "React.js, Ant Design, React Query",
+                  "Là một hệ thống ERP cung cấp giải pháp quản lý kho, nhân viên, kinh doanh, buôn bán và thống kê cho doanh nghiệp.",
+                tech: "Reactjs, Ant Design, React Query",
               },
               {
                 title: "ERP-SPACE",
                 description:
-                  "An ERP platform for business management including inventory, HR, and sales statistics.",
+                  "Là một hệ thống ERP cung cấp giải pháp quản lý kho, nhân viên, kinh doanh, buôn bán và thống kê cho doanh nghiệp.",
                 tech: "Vue 3, Ant Design, Pinia",
               },
             ].map((project, index) => (
@@ -293,11 +288,11 @@ export default function Portfolio() {
                     bordered={false}
                   >
                     <p className="text-gray-700 mb-2">
-                      <strong className="text-gray-600">Description:</strong>{" "}
+                      <strong className="text-gray-600">Mô tả:</strong>{" "}
                       {project.description}
                     </p>
                     <p className="text-sm text-gray-500">
-                      <strong className="text-gray-600">Tech Stack:</strong>{" "}
+                      <strong className="text-gray-600">Công nghệ:</strong>{" "}
                       {project.tech}
                     </p>
                   </Card>
@@ -307,13 +302,12 @@ export default function Portfolio() {
           </Row>
         </div>
 
-        {/* Education */}
         <div className="mt-12">
           <h2
             className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100"
             data-aos="fade-up"
           >
-            Education
+            Học vấn
           </h2>
           <div
             className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300"
@@ -321,10 +315,10 @@ export default function Portfolio() {
             data-aos-delay="100"
           >
             <p className="text-gray-800 font-semibold">
-              University of Transport and Communications
+              Đại học Công nghệ Giao thông Vận tải
             </p>
-            <p className="text-gray-600">Major: Computer Networks</p>
-            <p className="text-gray-600">English Level: B1 (Intermediate)</p>
+            <p className="text-gray-600">Chuyên ngành: Mạng máy tính</p>
+            <p className="text-gray-600">Trình độ tiếng Anh: B1 (Trung cấp)</p>
           </div>
         </div>
       </Content>
