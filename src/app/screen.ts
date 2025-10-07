@@ -1,17 +1,22 @@
 export const items = [
   {
     key: "1",
-    label: "Trang chủ",
+    label: "Home",
     path: "/",
   },
   {
     key: "2",
-    label: "Cửa hàng",
+    label: "Store",
     path: "/store",
   },
   {
-    key: "2",
-    label: "Giới thiệu",
+    key: "3",
+    label: "Portfolio",
     path: "/portfolio",
+  },
+  {
+    key: "4",
+    label: "Contact",
+    path: "/contact",
   },
 ];

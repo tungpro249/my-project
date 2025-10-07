@@ -29,19 +29,19 @@ export function FooterPage() {
                 href="/"
                 className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
               >
-                Trang chủ
+                Home
               </Link>
               <Link
                 href="/portfolio"
                 className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
               >
-                Giới thiệu
+                Portfolio
               </Link>
               <Link
-                href="/blog"
+                href="/store"
                 className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
               >
-                Bài viết
+                Store
               </Link>
             </Space>
           </div>
@@ -51,23 +51,23 @@ export function FooterPage() {
         <Col xs={24} sm={12} md={8} lg={6}>
           <div className="text-center">
             <h3 className="text-gray-800 dark:text-white text-lg font-semibold">
-              Theo dõi tôi
+              flow me
             </h3>
             <Space size="large" className="mt-4">
               <Link
-                href="#"
+                href="https://www.facebook.com/oanthanhtung.713556"
                 className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               >
                 <FacebookOutlined style={{ fontSize: "20px" }} />
               </Link>
               <Link
-                href="#"
+                href="https://www.linkedin.com/in/t%C3%B9ng-%C4%91o%C3%A0n-3b1292236/"
                 className="text-gray-600 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400"
               >
                 <InstagramOutlined style={{ fontSize: "20px" }} />
               </Link>
               <Link
-                href="#"
+                href="https://github.com/tungpro249"
                 className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-400"
               >
                 <GithubOutlined style={{ fontSize: "20px" }} />
