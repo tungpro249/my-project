@@ -12,7 +12,7 @@ export default function ContactForm() {
   const [status, setStatus] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };

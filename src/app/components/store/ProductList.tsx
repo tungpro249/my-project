@@ -43,11 +43,13 @@ export default function ProductList() {
           >
             {/* Image */}
             <div className="relative">
+              {/* eslint-disable @next/next/no-img-element */}
               <img
                 src={product.image}
                 alt={product.name}
                 className="w-full h-48 object-cover group-hover:scale-105 transition duration-500"
               />
+              {/* eslint-disable @next/next/no-img-element */}
               {/* Price Badge */}
               <span className="absolute top-3 right-3 bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-full shadow">
                 ${product.price}
