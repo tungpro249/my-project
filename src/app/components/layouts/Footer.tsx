@@ -13,7 +13,7 @@ export function FooterPage() {
       <Row gutter={[24, 24]} justify="center">
         {/* Logo / Title */}
         <Col span={24} className="text-center">
-          <div className="text-2xl font-bold text-gray-800 dark:text-white">
+          <div className="text-[36px] font-bold text-gray-800 dark:text-white">
             Đoàn Thanh Tùng Blog
           </div>
         </Col>
@@ -21,25 +21,25 @@ export function FooterPage() {
         {/* Navigation Links */}
         <Col xs={24} sm={12} md={8} lg={6}>
           <div className="text-center">
-            <h3 className="text-gray-800 dark:text-white text-lg font-semibold">
+            <h3 className="text-gray-800 dark:text-white text-xl font-semibold">
               Liên kết
             </h3>
             <Space direction="vertical" className="mt-4">
               <Link
                 href="/"
-                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                className="!text-white dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
               >
                 Home
               </Link>
               <Link
                 href="/portfolio"
-                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                className="!text-white dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
               >
                 Portfolio
               </Link>
               <Link
                 href="/store"
-                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                className="!text-white dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
               >
                 Store
               </Link>
@@ -50,25 +50,25 @@ export function FooterPage() {
         {/* Social Media */}
         <Col xs={24} sm={12} md={8} lg={6}>
           <div className="text-center">
-            <h3 className="text-gray-800 dark:text-white text-lg font-semibold">
-              flow me
+            <h3 className="text-gray-800 dark:text-white text-xl font-semibold">
+              Flow me
             </h3>
             <Space size="large" className="mt-4">
               <Link
                 href="https://www.facebook.com/oanthanhtung.713556"
-                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                className="!text-white dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               >
                 <FacebookOutlined style={{ fontSize: "20px" }} />
               </Link>
               <Link
                 href="https://www.linkedin.com/in/t%C3%B9ng-%C4%91o%C3%A0n-3b1292236/"
-                className="text-gray-600 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400"
+                className="!text-white dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400"
               >
                 <InstagramOutlined style={{ fontSize: "20px" }} />
               </Link>
               <Link
                 href="https://github.com/tungpro249"
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-400"
+                className="!text-white dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-400"
               >
                 <GithubOutlined style={{ fontSize: "20px" }} />
               </Link>
