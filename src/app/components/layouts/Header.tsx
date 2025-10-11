@@ -1,8 +1,13 @@
+"use client";
+
+import { useState } from "react";
 import { items } from "@/app/screen";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 
 export function HeaderPage() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className="bg-white dark:bg-gray-900 shadow sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,7 +31,7 @@ export function HeaderPage() {
             </span>
           </Link>
 
-          {/* Navigation */}
+          {/* Navigation (desktop) */}
           <nav className="hidden md:flex space-x-6">
             {items.map((item) => (
               <Link
@@ -47,11 +52,13 @@ export function HeaderPage() {
             >
               Đăng nhập/Đăng ký
             </Link>
-            {/* Theme toggle */}
             <ThemeToggle />
 
             {/* Mobile menu button */}
-            <button className="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+            >
               <svg
                 className="w-6 h-6"
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,11 +69,31 @@ export function HeaderPage() {
                 strokeLinejoin="round"
                 viewBox="0 0 24 24"
               >
-                <path d="M4 6h16M4 12h16M4 18h16" />
+                {isOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12" /> // X icon
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" /> // Menu icon
+                )}
               </svg>
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <nav className="md:hidden mt-2 space-y-2 pb-3 border-t border-gray-200 dark:border-gray-700">
+            {items.map((item) => (
+              <Link
+                key={item.key}
+                href={item.path}
+                onClick={() => setIsOpen(false)} // đóng menu sau khi click
+                className="block text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md px-3 py-2 text-sm font-medium transition"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        )}
       </div>
     </header>
   );

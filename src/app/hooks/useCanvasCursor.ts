@@ -187,7 +187,10 @@ export default function useCanvasCursor(): void {
     }
 
     function onMoveEvent(ev: MouseEvent | TouchEvent) {
-      ev.preventDefault();
+      const target = ev.target as HTMLElement;
+      if (target && target.id === "canvas") {
+        ev.preventDefault(); // chỉ chặn khi đang trên canvas
+      }
       updatePosFromEvent(ev);
     }
 
