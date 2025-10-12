@@ -1,10 +1,14 @@
 "use client";
 import { useState } from "react";
 import { message } from "antd";
+import { registerNotification } from "@/app/services/contact/contact.services";
+import { useLoadingStore } from "@/app/stores/useLoadingStore";
 
 export const NotifyEmail = () => {
   const [email, setEmail] = useState("");
   const [, setLoading] = useState(false);
+
+  const { show, hide } = useLoadingStore();
 
   const handleSendEmail = async () => {
     if (!email) {
@@ -14,12 +18,14 @@ export const NotifyEmail = () => {
 
     setLoading(true);
     try {
-      // await sendEmail(email);
+      show();
+      await registerNotification(email);
       message.success("Gửi email thành công");
       setEmail("");
-      /* eslint-disable @typescript-eslint/no-unused-vars */
+      hide();
     } catch (error) {
       message.error("Gửi email thất bại");
+      console.log("Failed to send email:", error);
     } finally {
       setLoading(false);
     }

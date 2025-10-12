@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import Pagination from "@/app/components/ui/Pagination";
 import { fetchPosts } from "@/app/services/posts/posts.services";
 import { Post } from "@/app/services/posts/post.type";
+import GlobalLoading from "../common/loading/GlobalLoading";
 
 export const metadata = {
   title: "Blog",
@@ -38,6 +39,7 @@ export default async function Home({
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 bg-white dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <GlobalLoading />
       <p className="text-center mb-8 !text-3xl !font-bold">
         Danh sách bài viết
       </p>
