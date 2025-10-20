@@ -3,19 +3,25 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { createPost } from "@/app/services/posts/posts.services";
+import CategorySelect from "../ui/CategorySelect";
 const Editor = dynamic(() => import("@/app/components/Editor"), { ssr: false });
 export default function CreateNewBlog() {
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [shortDescription, setShortDescription] = useState("");
+  const [category_id, setCategory_id] = useState("");
   const [content, setContent] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    if (!title || !content || !category_id) {
+      alert("Vui lòng nhập đầy đủ tiêu đề, nội dung và chọn danh mục!");
+      return;
+    }
     const newPost = {
       title,
       content,
-      category_id: "1",
+      category_id,
+      short_description: shortDescription,
     };
 
     const response = await createPost(newPost);
@@ -54,10 +60,20 @@ export default function CreateNewBlog() {
           <input
             id="description"
             type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={shortDescription}
+            onChange={(e) => setShortDescription(e.target.value)}
             placeholder="Nhập tiêu đề bài viết..."
             className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Danh mục
+          </label>
+          <CategorySelect
+            value={category_id}
+            onChange={(value) => setCategory_id(value.toString())}
           />
         </div>
         {/* Editor */}
@@ -72,7 +88,7 @@ export default function CreateNewBlog() {
         <div className="flex justify-end">
           <button
             type="submit"
-            onClick={handleSubmit}
+            // onClick={handleSubmit}
             className="px-5 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 focus:outline-none"
           >
             Đăng bài

@@ -34,7 +34,7 @@ export async function fetchPosts({
 
 export async function createPost(postData: {
   title: string;
-  description?: string;
+  short_description?: string;
   content: string;
   category_id: string;
 }) {
