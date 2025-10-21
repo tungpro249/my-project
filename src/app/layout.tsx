@@ -5,6 +5,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ThemeProvider } from "next-themes";
 import GlobalLoading from "./common/loading/GlobalLoading";
 import CanvasCursor from "./components/ui/CanvasCursor";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
           <AntdRegistry>
             <GlobalLoading />
             {children}
+            <Analytics />
             <CanvasCursor />
           </AntdRegistry>
         </ThemeProvider>

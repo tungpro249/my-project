@@ -7,12 +7,19 @@ import { useLoadingStore } from "@/app/stores/useLoadingStore";
 export const NotifyEmail = () => {
   const [email, setEmail] = useState("");
   const [, setLoading] = useState(false);
+  const [messageApi, contextHolder] = message.useMessage();
 
   const { show, hide } = useLoadingStore();
 
   const handleSendEmail = async () => {
     if (!email) {
-      message.error("Vui lòng nhập email");
+      messageApi.error("Vui lòng nhập email");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      messageApi.error("Email không hợp lệ");
       return;
     }
 
@@ -20,19 +27,20 @@ export const NotifyEmail = () => {
     try {
       show();
       await registerNotification(email);
-      message.success("Gửi email thành công");
       setEmail("");
-      hide();
+      messageApi.success("Gửi email thành công");
     } catch (error) {
-      message.error("Gửi email thất bại");
-      console.log("Failed to send email:", error);
+      console.error("Failed to send email:", error);
+      messageApi.error("Gửi email thất bại");
     } finally {
+      hide();
       setLoading(false);
     }
   };
 
   return (
     <div className="text-center">
+      {contextHolder}
       <h3 className="text-gray-800 dark:text-white text-xl font-semibold">
         Nhận email thông báo
       </h3>
