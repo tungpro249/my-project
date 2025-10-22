@@ -21,7 +21,7 @@ export default function AdminLayoutClient({
   // }, [pathname]);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen dark:bg-gray-900 dark:text-gray-100">
       <Sidebar />
       <main className="flex-1 p-6 bg-gray-100">{children}</main>
     </div>

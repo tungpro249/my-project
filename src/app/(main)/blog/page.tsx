@@ -37,7 +37,7 @@ export default async function BlogPage({
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 bg-white">
+    <div className="max-w-6xl mx-auto px-4 py-8 bg-white dark:bg-gray-900 dark:text-gray-100">
       <p className="text-center mb-8 !text-3xl !font-bold">
         Danh sách bài viết
       </p>

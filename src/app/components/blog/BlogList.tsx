@@ -38,7 +38,7 @@ export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
       key: "actions",
       render: (_: unknown, record: any) => (
         <div className="flex gap-2">
-          <Link href={`/post/${record.id}`}>
+          <Link href={`/admin/blog/${record.id}`}>
             <Button type="primary">Sửa</Button>
           </Link>
           <Popconfirm

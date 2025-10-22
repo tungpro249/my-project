@@ -15,7 +15,10 @@ const SettingsForm = () => {
 
   return (
     <div style={{ maxWidth: 600, margin: "0 auto", padding: 24 }}>
-      <h2 style={{ fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
+      <h2
+        style={{ fontSize: 20, fontWeight: 600, marginBottom: 16 }}
+        className="text-gray-700"
+      >
         Cài đặt hệ thống
       </h2>
 
