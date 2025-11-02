@@ -28,20 +28,40 @@ export default function Editor({ value, onChange }) {
           onChange(newData);
         }}
         config={{
-          toolbar: [
-            "heading",
-            "|",
-            "bold",
-            "italic",
-            "link",
-            "bulletedList",
-            "numberedList",
-            "|",
-            "blockQuote",
-            "insertTable",
-            "undo",
-            "redo",
-          ],
+          toolbar: {
+            items: [
+              "undo",
+              "redo",
+              "|",
+              "heading",
+              "|",
+              "fontfamily",
+              "fontsize",
+              "fontColor",
+              "fontBackgroundColor",
+              "|",
+              "bold",
+              "italic",
+              "strikethrough",
+              "subscript",
+              "superscript",
+              "code",
+              "|",
+              "link",
+              "uploadImage",
+              "blockQuote",
+              "CodeBlock",
+              "|",
+              "alignment",
+              "|",
+              "bulletedList",
+              "numberedList",
+              "todoList",
+              "outdent",
+              "indent",
+            ],
+            shouldNotGroupWhenFull: true,
+          },
           placeholder: "Nhập nội dung bài viết...",
         }}
       />
@@ -49,6 +69,7 @@ export default function Editor({ value, onChange }) {
         .editor-container {
           width: 100%;
           margin-bottom: 1rem;
+          color: #000;
         }
         .editor-container :global(.ck-editor__editable) {
           min-height: 400px;

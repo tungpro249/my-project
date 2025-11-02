@@ -1,15 +1,46 @@
 "use client";
 
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import { createPost } from "@/app/services/posts/posts.services";
 import CategorySelect from "../ui/CategorySelect";
-const Editor = dynamic(() => import("@/app/components/Editor"), { ssr: false });
+import ReactQuill from "react-quill-new";
+
 export default function CreateNewBlog() {
   const [title, setTitle] = useState("");
   const [shortDescription, setShortDescription] = useState("");
-  const [category_id, setCategory_id] = useState("");
+  const [category_id, setCategory_id] = useState<number | undefined>(undefined);
   const [content, setContent] = useState("");
+
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
+      ["link", "image"],
+      ["clean"],
+      ["code-block"],
+    ],
+  };
+
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "code-block",
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,7 +51,7 @@ export default function CreateNewBlog() {
     const newPost = {
       title,
       content,
-      category_id,
+      category_id: String(category_id),
       short_description: shortDescription,
     };
 
@@ -74,7 +105,7 @@ export default function CreateNewBlog() {
           </label>
           <CategorySelect
             value={category_id}
-            onChange={(value) => setCategory_id(value.toString())}
+            onChange={(value) => setCategory_id(value)}
           />
         </div>
         {/* Editor */}
@@ -82,14 +113,22 @@ export default function CreateNewBlog() {
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Nội dung
           </label>
-          <Editor value={content} onChange={setContent} />
+          <ReactQuill
+            theme="snow"
+            modules={modules}
+            formats={formats}
+            value={content}
+            onChange={setContent}
+            placeholder="Nội dung bài viết"
+            style={{ color: "#000" }}
+          />
+          ;
         </div>
 
         {/* Submit button */}
         <div className="flex justify-end">
           <button
             type="submit"
-            // onClick={handleSubmit}
             className="px-5 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 focus:outline-none"
           >
             Đăng bài
