@@ -3,7 +3,10 @@
 import React, { useState } from "react";
 import { createPost } from "@/app/services/posts/posts.services";
 import CategorySelect from "../ui/CategorySelect";
-import ReactQuill from "react-quill-new";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill-new"), {
+  ssr: false,
+});
 
 export default function CreateNewBlog() {
   const [title, setTitle] = useState("");
