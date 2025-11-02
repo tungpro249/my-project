@@ -8,8 +8,8 @@ import { CategoryType } from "@/app/services/categories/category.type";
 const { Option } = Select;
 
 interface CategorySelectProps {
-  value?: string;
-  onChange?: (value: string | number) => void;
+  value?: number;
+  onChange?: (value: number) => void;
 }
 
 export default function CategorySelect({
@@ -28,8 +28,9 @@ export default function CategorySelect({
     <Select
       placeholder="Chọn danh mục"
       className="w-full"
-      value={Number(value)}
+      value={value}
       onChange={onChange}
+      allowClear
     >
       {categories.map((category) => (
         <Option key={category.id} value={category.id}>

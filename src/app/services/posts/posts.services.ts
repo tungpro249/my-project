@@ -32,6 +32,17 @@ export async function fetchPosts({
   };
 }
 
+export async function fetchPostBySlug(slug: string) {
+  const res = await fetch(`${GET_LIST_POST}/${slug}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Failed to fetch post");
+  }
+  const data = await res.json();
+  return data.data;
+}
+
 export async function createPost(postData: {
   title: string;
   short_description?: string;

@@ -17,7 +17,9 @@ export default async function AdminBlogPage({
 
   return (
     <div className="p-8">
-      <p className="text-center text-3xl font-bold">Danh sách bài viết</p>
+      <p className="text-gray-700 mb-8 text-3xl font-bold">
+        Danh sách bài viết
+      </p>
       <BlogList initialPosts={blogPosts} />
     </div>
   );

@@ -1,11 +1,18 @@
 @import "tailwindcss";
 @import "aos/dist/aos.css";
-@import "react-loading-skeleton/dist/skeleton.css";
+@import "react-quill-new/dist/quill.snow.css";
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+.ql-code-block {
+  background-color: #000;
+  border-radius: 6px;
+  padding: 10px;
+  font-family: monospace;
 }
 
 @theme inline {

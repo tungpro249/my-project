@@ -1,7 +1,11 @@
+import { TotalCard } from "@/app/components/admin/dashboard/TotalCard";
+
 export default function AdminPage() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-[#000]">Admin Page</h1>
+    <div className="grid grid-cols-3 gap-4">
+      <TotalCard title="Tổng số người dùng" count={100} />
+      <TotalCard title="Tổng số bài viết" count={100} />
+      <TotalCard title="Tổng số danh mục" count={100} />
     </div>
   );
 }
