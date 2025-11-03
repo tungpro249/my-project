@@ -40,7 +40,7 @@ export default async function Home({
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 bg-white dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
       <GlobalLoading />
-      <p className="text-center mb-8 !text-3xl !font-bold">
+      <p className="text-center mb-8 !text-3xl !font-bold text-gray-800 dark:text-gray-100">
         Danh sách bài viết
       </p>
       <div className="mb-8">

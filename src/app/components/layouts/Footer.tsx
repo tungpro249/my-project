@@ -9,37 +9,33 @@ import { NotifyEmail } from "../ui/NotifyEmail";
 
 export function FooterPage() {
   return (
-    <footer className="bg-white dark:bg-gray-900 py-12 px-6">
+    <footer className="bg-white text-gray-800 dark:bg-[#0f172a] dark:text-gray-200 transition-colors duration-300 py-12 px-6">
       <Row gutter={[24, 24]} justify="center">
         {/* Logo / Title */}
         <Col span={24} className="text-center">
-          <div className="text-[36px] font-bold text-gray-800 dark:text-white">
-            Đoàn Thanh Tùng Blog
-          </div>
+          <div className="text-[36px] font-bold">Đoàn Thanh Tùng Blog</div>
         </Col>
 
         {/* Navigation Links */}
         <Col xs={24} sm={12} md={8} lg={6}>
           <div className="text-center">
-            <h3 className="text-gray-800 dark:text-white text-xl font-semibold">
-              Liên kết
-            </h3>
+            <h3 className="text-xl font-semibold">Liên kết</h3>
             <Space direction="vertical" className="mt-4">
               <Link
                 href="/"
-                className="!text-white dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                className="text-gray-800 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               >
                 Home
               </Link>
               <Link
                 href="/portfolio"
-                className="!text-white dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                className="text-gray-800 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               >
                 Portfolio
               </Link>
               <Link
                 href="/store"
-                className="!text-white dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                className="text-gray-800 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               >
                 Store
               </Link>
@@ -50,25 +46,23 @@ export function FooterPage() {
         {/* Social Media */}
         <Col xs={24} sm={12} md={8} lg={6}>
           <div className="text-center">
-            <h3 className="text-gray-800 dark:text-white text-xl font-semibold">
-              Flow me
-            </h3>
+            <h3 className="text-xl font-semibold">Follow me</h3>
             <Space size="large" className="mt-4">
               <Link
                 href="https://www.facebook.com/oanthanhtung.713556"
-                className="!text-white dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                className="text-gray-800 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <FacebookOutlined style={{ fontSize: "20px" }} />
               </Link>
               <Link
                 href="https://www.linkedin.com/in/t%C3%B9ng-%C4%91o%C3%A0n-3b1292236/"
-                className="!text-white dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400"
+                className="text-gray-800 dark:text-gray-100 hover:text-pink-500 dark:hover:text-pink-400 transition-colors"
               >
                 <InstagramOutlined style={{ fontSize: "20px" }} />
               </Link>
               <Link
                 href="https://github.com/tungpro249"
-                className="!text-white dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-400"
+                className="text-gray-800 dark:text-gray-100 hover:text-gray-900 dark:hover:text-gray-400 transition-colors"
               >
                 <GithubOutlined style={{ fontSize: "20px" }} />
               </Link>
