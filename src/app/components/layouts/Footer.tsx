@@ -6,6 +6,7 @@ import {
 } from "@ant-design/icons";
 import Link from "next/link";
 import { NotifyEmail } from "../ui/NotifyEmail";
+import DmcaBadge from "../DmcaBadge";
 
 export function FooterPage() {
   return (
@@ -73,6 +74,8 @@ export function FooterPage() {
         {/* Email Subscription */}
         <Col xs={24} sm={12} md={8} lg={6}>
           <NotifyEmail />
+          <div className="mt-4"></div>
+          <DmcaBadge  />
         </Col>
 
         {/* Copyright */}
