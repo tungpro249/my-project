@@ -17,7 +17,7 @@ export default function DmcaBadge() {
       className="dmca-badge"
     >
       <img
-        src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=057d307d-15c2-4802-a020-f5b08ea187d6"
+        src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-01.png?ID=057d307d-15c2-4802-a020-f5b08ea187d6"
         alt="DMCA.com Protection Status"
       />
     </a>

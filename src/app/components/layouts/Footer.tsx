@@ -75,7 +75,7 @@ export function FooterPage() {
         <Col xs={24} sm={12} md={8} lg={6}>
           <NotifyEmail />
           <div className="mt-4"></div>
-          <DmcaBadge  />
+          <DmcaBadge />
         </Col>
 
         {/* Copyright */}
