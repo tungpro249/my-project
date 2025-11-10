@@ -37,7 +37,7 @@ export function HeaderPage() {
               <Link
                 key={item.key}
                 href={item.path}
-                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="!text-gray-700 dark:!text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 {item.label}
               </Link>
@@ -48,7 +48,7 @@ export function HeaderPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/login"
-              className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              className="!text-gray-700 dark:!text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
             >
               Đăng nhập
             </Link>
@@ -57,7 +57,7 @@ export function HeaderPage() {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+              className="md:hidden p-2 rounded-lg !text-gray-700 dark:!text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
             >
               <svg
                 className="w-6 h-6"
@@ -87,7 +87,7 @@ export function HeaderPage() {
                 key={item.key}
                 href={item.path}
                 onClick={() => setIsOpen(false)} // đóng menu sau khi click
-                className="block text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md px-3 py-2 text-sm font-medium transition"
+                className="block !text-gray-700 dark:!text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md px-3 py-2 text-sm font-medium transition"
               >
                 {item.label}
               </Link>

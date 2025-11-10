@@ -19,7 +19,7 @@ const skills = [
   { name: "Next.js", icon: <RiNextjsFill /> },
   { name: "Vue", icon: <FaVuejs /> },
   { name: "TypeScript", icon: <SiTypescript /> },
-  { name: "Tailwind CSS", icon: <RiTailwindCssFill /> },
+  { name: "Tailwind", icon: <RiTailwindCssFill /> },
   { name: "Node.js", icon: <FaNodeJs /> },
 ];
 
@@ -82,7 +82,7 @@ export default function Portfolio() {
                 rel="noopener noreferrer"
                 aria-label="Open Doan Thanh Tung's GitHub profile"
               >
-                <GithubOutlined className="text-2xl hover:text-blue-500 transition duration-300" />
+                <GithubOutlined className="text-2xl text-gray-700 dark:!text-gray-100 hover:text-blue-500 transition duration-300" />
               </Link>
 
               <Link
@@ -91,7 +91,7 @@ export default function Portfolio() {
                 rel="noopener noreferrer"
                 aria-label="Open Doan Thanh Tung's LinkedIn profile"
               >
-                <LinkedinOutlined className="text-2xl hover:text-blue-500 transition duration-300" />
+                <LinkedinOutlined className="text-2xl text-gray-700 dark:!text-gray-100 hover:text-blue-500 transition duration-300" />
               </Link>
             </Space>
           </Col>

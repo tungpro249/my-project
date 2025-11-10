@@ -8,8 +8,19 @@
   --foreground: #171717;
 }
 
-.ql-code-block {
-  background-color: #000;
+/* Light theme */
+[data-theme="light"] .ql-code-block-container {
+  background-color: #bbb8b8;
+  color: #000000;
+  border-radius: 6px;
+  padding: 10px;
+  font-family: monospace;
+}
+
+/* Dark theme */
+[data-theme="dark"] .ql-code-block-container {
+  background-color: #242323;
+  color: #fff;
   border-radius: 6px;
   padding: 10px;
   font-family: monospace;

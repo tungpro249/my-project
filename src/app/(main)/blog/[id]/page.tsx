@@ -67,7 +67,7 @@ export default async function BlogDetailPage({ params }: any) {
           <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
             {post.title}
           </h1>
-          <div className="mt-6 prose prose-lg prose-slate dark:prose-invert max-w-none dark:text-[#fff]">
+          <div className="mt-6 prose prose-lg prose-slate dark:prose-invert max-w-none dark:text-[#fff] text-gray-700">
             <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
           </div>
         </div>
