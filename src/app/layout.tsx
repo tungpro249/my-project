@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     template: "%s | bò sữa phê cỏ",
   },
   description: "Blog của tôi",
+  icons: {
+    icon: "/logo.ico",
+  }
 };
 
 export default function RootLayout({
