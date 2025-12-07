@@ -1,8 +1,7 @@
-// app/admin/AdminLayoutClient.tsx
 "use client";
 
-// import { useRouter, usePathname } from "next/navigation";
-import { type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { useRouter } from "next/navigation";
 import Sidebar from "@/app/components/admin/Sidebar";
 
 export default function AdminLayoutClient({
@@ -10,15 +9,44 @@ export default function AdminLayoutClient({
 }: {
   children: ReactNode;
 }) {
-  // const router = useRouter();
-  // const pathname = usePathname();
+  const router = useRouter();
+  const [isChecking, setIsChecking] = useState(true);
 
-  // useEffect(() => {
-  //   const isAuth = document.cookie.includes("admin-auth=true");
-  //   if (!isAuth) {
-  //     router.push("/admin-login");
-  //   }
-  // }, [pathname]);
+  useEffect(() => {
+    const token = localStorage.getItem("user");
+
+    // Không có token → redirect login
+    if (!token) {
+      router.replace("/login");
+      return;
+    }
+
+    let user;
+    try {
+      user = JSON.parse(token);
+    } catch (error) {
+      console.error("JSON parse error:", error);
+      router.replace("/login");
+      return;
+    }
+
+    // Không phải admin → redirect home
+    if (user.role !== "admin") {
+      router.replace("/");
+      return;
+    }
+
+    // Ok → render admin
+    setIsChecking(false);
+  }, []);
+
+  if (isChecking) {
+    return (
+      <div className="flex min-h-screen items-center justify-center text-xl">
+        Checking permission...
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen dark:bg-gray-900 dark:text-gray-100">

@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function RegisterForm() {
-  const [username, setName] = useState("");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -22,7 +22,7 @@ export default function RegisterForm() {
       const res = await fetch("http://localhost:5000/api/v1/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ username, email, password }),
       });
 
       if (!res.ok) {
@@ -36,7 +36,7 @@ export default function RegisterForm() {
       console.log("Register success:", data);
 
       // Reset form
-      setName("");
+      setUserName("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
@@ -60,7 +60,7 @@ export default function RegisterForm() {
         type="text"
         placeholder="Họ và tên"
         value={username}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => setUserName(e.target.value)}
         className="border border-gray-300 dark:border-gray-600 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
         required
       />
