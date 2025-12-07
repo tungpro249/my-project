@@ -3,6 +3,9 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 const nextConfig = {
+  experimental: {
+    turbo: false,
+  },
   // output: 'export',
   // trailingSlash: true,
   images: {
