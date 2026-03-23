@@ -1,21 +1,18 @@
+import DOMPurify from "isomorphic-dompurify";
 import { Row, Col, Card } from "antd";
 import Link from "next/link";
 import dayjs from "dayjs";
-
-interface Post {
-  id: number;
-  title: string;
-  short_description: string;
-  content: string;
-  slug: string;
-  created_at: string;
-}
+import { Post } from "@/app/services/posts/post.type";
+import { api } from "@/app/services/api";
 
 export default async function PostSimilar() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/post`, {
-    cache: "no-store",
-  });
-  const blogPosts = await res.json();
+  try {
+    const res = await api.get("/post", { cache: "no-store" });
+    if (!res.ok) return null;
+    var blogPosts = await res.json();
+  } catch {
+    return null;
+  }
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -31,16 +28,16 @@ export default async function PostSimilar() {
                 className="shadow-md rounded-lg transition-all duration-300 h-full bg-white dark:bg-gray-800 dark:border-gray-700"
               >
                 <div className="mb-3">
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-[#000] line-clamp-2">
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-gray-500 dark:dark:text-[#000] mt-1">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                     {dayjs(post.created_at).format("DD/MM/YYYY HH:mm")}
                   </p>
                 </div>
                 <div
-                  className="text-gray-700 dark:text-[#000] text-sm line-clamp-3"
-                  dangerouslySetInnerHTML={{ __html: post.short_description }}
+                  className="text-gray-700 dark:text-gray-300 text-sm line-clamp-3"
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.short_description) }}
                 />
               </Card>
             </Link>

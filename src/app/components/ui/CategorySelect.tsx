@@ -2,8 +2,9 @@
 
 import { Select } from "antd";
 import { useEffect, useState } from "react";
-import { GET_LIST_CATEGORY } from "@/app/services/categories/category.api";
+import { CATEGORIES_OPTIONS_ENDPOINT } from "@/app/services/categories/category.api";
 import { CategoryType } from "@/app/services/categories/category.type";
+import { api } from "@/app/services/api";
 
 const { Option } = Select;
 
@@ -19,7 +20,7 @@ export default function CategorySelect({
   const [categories, setCategories] = useState<CategoryType[]>([]);
 
   useEffect(() => {
-    fetch(GET_LIST_CATEGORY)
+    api.get(CATEGORIES_OPTIONS_ENDPOINT)
       .then((response) => response.json())
       .then((data) => setCategories(data.data || []));
   }, []);

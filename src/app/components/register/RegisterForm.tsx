@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { api } from "@/app/services/api";
 
 export default function RegisterForm() {
   const [username, setUserName] = useState("");
@@ -19,11 +20,7 @@ export default function RegisterForm() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/v1/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password }),
-      });
+      const res = await api.post("/auth/register", { username, email, password });
 
       if (!res.ok) {
         const err = await res.json();

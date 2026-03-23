@@ -1,31 +1,37 @@
 "use client";
 import { loginWithGoogle } from "@/app/services/auth/auth.service";
+import { api } from "@/app/services/api";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const handleRedirectByRole = (user: { role?: string }) => {
+    if (user?.role === "admin") {
+      window.location.href = `${process.env.NEXT_PUBLIC_ADMIN_URL}/admin`;
+    } else {
+      router.push("/blog");
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/v1/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
+      const res = await api.post("/auth/login", { email, password });
       const data = await res.json();
 
       if (res.ok) {
-        // Lưu access_token vào localStorage
         localStorage.setItem("access_token", data.access_token);
-        localStorage.setItem("user", JSON.stringify(data.user)); // nếu muốn lưu thông tin user
+        localStorage.setItem("user", JSON.stringify(data.user));
 
         console.log("Login success:", data);
+        handleRedirectByRole(data.user);
       } else {
         console.error("Login failed:", data.message || "Unknown error");
       }
@@ -93,7 +99,18 @@ export default function LoginForm() {
       <div className="flex flex-col gap-3">
         <button
           type="button"
-          onClick={loginWithGoogle}
+          onClick={async () => {
+            try {
+              const data = await loginWithGoogle();
+              if (data?.access_token) {
+                localStorage.setItem("access_token", data.access_token);
+                localStorage.setItem("user", JSON.stringify(data.user));
+                handleRedirectByRole(data.user);
+              }
+            } catch (error) {
+              console.error("Google login error:", error);
+            }
+          }}
           className="flex items-center justify-center gap-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg py-3 hover:bg-gray-100 dark:hover:bg-gray-600 transition"
         >
           <FcGoogle size={20} />

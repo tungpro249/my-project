@@ -4,17 +4,13 @@ import { useState } from "react";
 import { Button, Popconfirm, Table, message } from "antd";
 import Link from "next/link";
 import { Post } from "@/app/services/posts/post.type";
+import { api } from "@/app/services/api";
 
 export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
   const [posts, setPosts] = useState<any>(initialPosts);
 
   const handleDelete = async (id: string) => {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/post/${id}`,
-      {
-        method: "DELETE",
-      },
-    );
+    const res = await api.delete(`/post/${id}`);
     if (res.ok) {
       message.success("Xóa bài viết thành công");
       setPosts((prev: any) => prev.filter((p: any) => p.id !== id));
