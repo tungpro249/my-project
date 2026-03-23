@@ -23,7 +23,9 @@ export default function CreateNewBlogClient() {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow rounded-lg">
-      <h1 className="text-2xl font-bold mb-4">Tạo bài viết mới</h1>
+      <h1 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+        Tạo bài viết mới
+      </h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Title */}

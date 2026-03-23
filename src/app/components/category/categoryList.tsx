@@ -3,11 +3,10 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Table, message } from "antd";
 import CreateOrUpdate from "../ui/modal/CreateOrUpdate";
+import { api } from "@/app/services/api";
 import {
-  CREATE_CATEGORY,
-  DELETE_CATEGORY,
-  GET_LIST_CATEGORY,
-  UPDATE_CATEGORY,
+  CATEGORIES_ENDPOINT,
+  CATEGORIES_OPTIONS_ENDPOINT,
 } from "@/app/services/categories/category.api";
 
 interface Category {
@@ -25,7 +24,7 @@ export default function CategoryList() {
   const fetchCategories = async () => {
     setLoading(true);
     try {
-      const response = await fetch(GET_LIST_CATEGORY);
+      const response = await api.get(CATEGORIES_OPTIONS_ENDPOINT);
       const data = await response.json();
       setCategories(data.data || []);
     } catch (error) {
@@ -42,11 +41,7 @@ export default function CategoryList() {
   // Create
   const handleCreate = async (data: any) => {
     try {
-      const res = await fetch(CREATE_CATEGORY, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const res = await api.post(CATEGORIES_ENDPOINT, data);
       if (res.ok) {
         message.success("Thêm danh mục thành công");
         fetchCategories();
@@ -63,12 +58,8 @@ export default function CategoryList() {
   // Update
   const handleUpdate = async (data: any) => {
     try {
-      const res = await fetch(`${UPDATE_CATEGORY}/${data.id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.name,
-        }),
+      const res = await api.put(`${CATEGORIES_ENDPOINT}/${data.id}`, {
+        name: data.name,
       });
       if (res.ok) {
         message.success("Cập nhật thành công");
@@ -87,9 +78,7 @@ export default function CategoryList() {
   // Delete
   const handleDelete = async (id: number) => {
     try {
-      const res = await fetch(`${DELETE_CATEGORY}/${id}`, {
-        method: "DELETE",
-      });
+      const res = await api.delete(`${CATEGORIES_ENDPOINT}/${id}`);
       if (res.ok) {
         message.success("Xóa danh mục thành công");
         fetchCategories();

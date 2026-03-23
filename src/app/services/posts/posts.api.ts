@@ -1,3 +1,3 @@
-const GET_LIST_POST = `${process.env.NEXT_PUBLIC_API_BASE_URL}/post`;
+import { BASE_URL } from "../api";
 
-export { GET_LIST_POST };
+export const POSTS_ENDPOINT = `${BASE_URL}/post`;

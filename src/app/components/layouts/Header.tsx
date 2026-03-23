@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { items } from "@/app/screen";
+import { navItems } from "@/app/navigation";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 
@@ -33,7 +33,7 @@ export function HeaderPage() {
 
           {/* Navigation (desktop) */}
           <nav className="hidden md:flex space-x-6">
-            {items.map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.path}
@@ -82,7 +82,7 @@ export function HeaderPage() {
         {/* Mobile Menu */}
         {isOpen && (
           <nav className="md:hidden mt-2 space-y-2 pb-3 border-t border-gray-200 dark:border-gray-700">
-            {items.map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.path}

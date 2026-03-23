@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
-import DOMPurify from "isomorphic-dompurify"; // Use isomorphic-dompurify for SSR
+import DOMPurify from "isomorphic-dompurify";
 import PostSimilar from "@/app/components/PostSimilar";
 import { Post } from "@/app/services/posts/post.type";
 import { Metadata } from "next";
+import { fetchPostBySlug } from "@/app/services/posts/posts.services";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -18,43 +19,9 @@ export const generateMetadata = async ({
   };
 };
 
-async function getPostBySlug(id: string): Promise<Post | null> {
-  try {
-    const baseUrl =
-      process.env.API_BASE_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL;
-    if (!baseUrl) {
-      console.error(
-        "Missing API base URL (set API_BASE_URL or NEXT_PUBLIC_API_BASE_URL)",
-      );
-      return null;
-    }
-    const res = await fetch(`${baseUrl}/post/${encodeURIComponent(id)}`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      console.error(`API error: ${res.status} ${res.statusText}`);
-      return null;
-    }
-
-    const response = await res.json();
-    const post: Post = response.data;
-
-    if (!post || !post.content) {
-      console.error("Invalid post data:", post);
-      return null;
-    }
-
-    return post;
-  } catch (error) {
-    console.error("Failed to fetch post:", error);
-    return null;
-  }
-}
-
 export default async function BlogDetailPage({ params }: any) {
   const { id } = await params;
-  const post = await getPostBySlug(id);
+  const post = await fetchPostBySlug(id);
 
   if (!post) return notFound();
 

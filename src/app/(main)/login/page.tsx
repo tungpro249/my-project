@@ -4,7 +4,7 @@ export const dynamic = "force-dynamic"; // đảm bảo SSR mỗi lần request
 
 export default async function LoginPage() {
   // Có thể fetch data SSR ở đây (vd: config login, csrf token...)
-  // const res = await fetch("http://localhost:5000/api/v1/auth/config", { cache: "no-store" });
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/config`, { cache: "no-store" });
   // const config = await res.json();
 
   return (

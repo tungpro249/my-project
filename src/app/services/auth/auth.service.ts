@@ -1,25 +1,16 @@
 import { auth, googleProvider } from "@/app/utils/firebase";
 import { signInWithPopup } from "firebase/auth";
+import { api } from "../api";
 
 export const loginWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
 
-    // 👇 Lấy ID token Firebase để gửi về backend
     const idToken = await user.getIdToken();
 
-    // Gửi token lên backend
-    const res = await fetch("http://localhost:5000/api/v1/auth/google-login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ idToken }),
-    });
-
+    const res = await api.post("/auth/google-login", { idToken });
     const data = await res.json();
-    console.log("Server response:", data);
 
     return data;
   } catch (error) {
