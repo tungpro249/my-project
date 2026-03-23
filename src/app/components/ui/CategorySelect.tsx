@@ -20,7 +20,8 @@ export default function CategorySelect({
   const [categories, setCategories] = useState<CategoryType[]>([]);
 
   useEffect(() => {
-    api.get(CATEGORIES_OPTIONS_ENDPOINT)
+    api
+      .get(CATEGORIES_OPTIONS_ENDPOINT)
       .then((response) => response.json())
       .then((data) => setCategories(data.data || []));
   }, []);

@@ -40,9 +40,7 @@ async function request<T = any>(
       `Bearer ${authToken}`;
   }
 
-  const url = endpoint.startsWith("http")
-    ? endpoint
-    : `${BASE_URL}${endpoint}`;
+  const url = endpoint.startsWith("http") ? endpoint : `${BASE_URL}${endpoint}`;
 
   const res = await fetch(url, {
     method,

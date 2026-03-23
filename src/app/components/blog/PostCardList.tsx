@@ -17,9 +17,7 @@ export default function PostCardList({ posts }: PostCardListProps) {
             <Card
               title={
                 <div className="flex justify-between">
-                  <span className="!text-xl !font-semibold">
-                    {post.title}
-                  </span>
+                  <span className="!text-xl !font-semibold">{post.title}</span>
                   <span className="text-gray-500 text-sm dark:text-gray-400">
                     {dayjs(post.created_at).format("DD/MM/YYYY HH:mm")}
                   </span>

@@ -7,9 +7,13 @@ export async function sendMail(data: any) {
 }
 
 export async function registerNotification(email: string) {
-  const res = await api.post(SUBSCRIBERS_ENDPOINT, { email }, {
-    cache: "no-store",
-  });
+  const res = await api.post(
+    SUBSCRIBERS_ENDPOINT,
+    { email },
+    {
+      cache: "no-store",
+    },
+  );
   if (!res.ok) {
     throw new Error("Failed to subscribe notification");
   }

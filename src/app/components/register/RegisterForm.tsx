@@ -20,7 +20,11 @@ export default function RegisterForm() {
     }
 
     try {
-      const res = await api.post("/auth/register", { username, email, password });
+      const res = await api.post("/auth/register", {
+        username,
+        email,
+        password,
+      });
 
       if (!res.ok) {
         const err = await res.json();

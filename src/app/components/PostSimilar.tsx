@@ -37,7 +37,9 @@ export default async function PostSimilar() {
                 </div>
                 <div
                   className="text-gray-700 dark:text-gray-300 text-sm line-clamp-3"
-                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.short_description) }}
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(post.short_description),
+                  }}
                 />
               </Card>
             </Link>
