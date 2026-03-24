@@ -1,4 +1,4 @@
-import LoginForm from "@/app/components/login/LoginForm";
+import LoginForm from "./components/LoginForm";
 
 export const dynamic = "force-dynamic"; // đảm bảo SSR mỗi lần request
 

@@ -1,4 +1,4 @@
-import { TotalCard } from "@/app/components/admin/dashboard/TotalCard";
+import { TotalCard } from "@/app/(admin)/admin/dashboard/components/TotalCard";
 
 export default function AdminPage() {
   return (

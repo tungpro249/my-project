@@ -1,4 +1,4 @@
-import ProductList from "@/app/components/store/ProductList";
+import ProductList from "@/app/(main)/store/components/ProductList";
 
 export const metadata = {
   title: "Cửa hàng",

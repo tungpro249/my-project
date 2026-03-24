@@ -3,17 +3,17 @@
 import { useState } from "react";
 import { Button, Popconfirm, Table, message } from "antd";
 import Link from "next/link";
-import { Post } from "@/app/services/posts/post.type";
+import { Post } from "@/app/types/post.type";
 import { api } from "@/app/services/api";
 
-export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
-  const [posts, setPosts] = useState<any>(initialPosts);
+export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
+  const [posts, setPosts] = useState<Post[]>(initialPosts);
 
   const handleDelete = async (id: string) => {
     const res = await api.delete(`/post/${id}`);
     if (res.ok) {
       message.success("Xóa bài viết thành công");
-      setPosts((prev: any) => prev.filter((p: any) => p.id !== id));
+      setPosts((prev) => prev.filter((p) => p.id.toString() !== id));
     } else {
       message.error("Xóa thất bại");
     }
@@ -32,7 +32,7 @@ export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
     {
       title: "Hành động",
       key: "actions",
-      render: (_: unknown, record: any) => (
+      render: (_: unknown, record: Post) => (
         <div className="flex gap-2">
           <Link href={`/admin/blog/${record.slug}`}>
             <Button type="primary">Sửa</Button>
@@ -41,7 +41,7 @@ export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
             title="Xác nhận xóa"
             okText="Xóa"
             cancelText="Hủy"
-            onConfirm={() => handleDelete(record.id)}
+            onConfirm={() => handleDelete(String(record.id))}
           >
             <Button danger>Xóa</Button>
           </Popconfirm>
@@ -50,12 +50,5 @@ export default function BlogList({ initialPosts }: { initialPosts: any[] }) {
     },
   ];
 
-  return (
-    <>
-      <Table dataSource={posts} columns={columns} />
-      {/* <div className="mt-8">
-        <Pagination total={total} pageSize={posts.pageSize} />
-      </div> */}
-    </>
-  );
+  return <Table dataSource={posts} columns={columns} rowKey="id" />;
 }

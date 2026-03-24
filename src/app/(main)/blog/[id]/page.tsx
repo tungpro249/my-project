@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import DOMPurify from "isomorphic-dompurify";
-import PostSimilar from "@/app/components/PostSimilar";
-import { Post } from "@/app/services/posts/post.type";
+import PostSimilar from "../components/PostSimilar";
+import { Post } from "@/app/types/post.type";
 import { Metadata } from "next";
 import { fetchPostBySlug } from "@/app/services/posts/posts.services";
 

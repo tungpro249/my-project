@@ -1,4 +1,4 @@
-import SettingsForm from "@/app/components/settings/SettingForm";
+import SettingsForm from "@/app/(admin)/admin/settings/components/SettingForm";
 
 export default function AdminSettingsPage() {
   return <SettingsForm />;

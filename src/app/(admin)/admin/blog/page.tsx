@@ -1,5 +1,5 @@
 import { fetchPosts } from "@/app/services/posts/posts.services";
-import BlogList from "../../../components/blog/BlogList";
+import BlogList from "./components/BlogList";
 
 export default async function AdminBlogPage({
   searchParams,

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import CategorySelect from "../ui/CategorySelect";
-import QuillEditor from "../ui/quill/QuillEditor";
+import CategorySelect from "@/app/components/ui/CategorySelect";
+import QuillEditor from "@/app/components/ui/quill/QuillEditor";
 import { createPost } from "@/app/services/posts/posts.services";
 
 export default function CreateNewBlogClient() {
@@ -28,7 +28,6 @@ export default function CreateNewBlogClient() {
       </h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Title */}
         <input
           className="border p-2 w-full"
           value={title}
@@ -36,7 +35,6 @@ export default function CreateNewBlogClient() {
           placeholder="Tiêu đề"
         />
 
-        {/* Description */}
         <input
           className="border p-2 w-full"
           value={shortDescription}
@@ -44,10 +42,8 @@ export default function CreateNewBlogClient() {
           placeholder="Mô tả ngắn"
         />
 
-        {/* Category */}
         <CategorySelect value={category_id} onChange={setCategory_id} />
 
-        {/* Quill Editor */}
         <QuillEditor value={content} onChange={setContent} />
 
         <button

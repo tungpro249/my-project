@@ -3,7 +3,7 @@
 import { Select } from "antd";
 import { useEffect, useState } from "react";
 import { CATEGORIES_OPTIONS_ENDPOINT } from "@/app/services/categories/category.api";
-import { CategoryType } from "@/app/services/categories/category.type";
+import { CategoryType } from "@/app/types/category.type";
 import { api } from "@/app/services/api";
 
 const { Option } = Select;

@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
-import Sidebar from "@/app/components/admin/Sidebar";
+import Sidebar from "./components/Sidebar";
 
 export default function AdminLayoutClient({
   children,
