@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Table, message } from "antd";
-import CreateOrUpdate from "../ui/modal/CreateOrUpdate";
+import CreateOrUpdate from "@/app/components/ui/modal/CreateOrUpdate";
 import { api } from "@/app/services/api";
 import {
   CATEGORIES_ENDPOINT,

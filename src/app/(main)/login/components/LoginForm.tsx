@@ -49,7 +49,6 @@ export default function LoginForm() {
         Đăng nhập
       </h2>
 
-      {/* Email */}
       <input
         type="email"
         placeholder="Email"
@@ -59,7 +58,6 @@ export default function LoginForm() {
         required
       />
 
-      {/* Password */}
       <input
         type="password"
         placeholder="Mật khẩu"
@@ -69,7 +67,6 @@ export default function LoginForm() {
         required
       />
 
-      {/* Login button */}
       <button
         type="submit"
         className="bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition"
@@ -77,7 +74,6 @@ export default function LoginForm() {
         Đăng nhập
       </button>
 
-      {/* Link to register */}
       <p className="text-center text-sm text-gray-600 dark:text-gray-400">
         Chưa có tài khoản?{" "}
         <Link
@@ -88,14 +84,12 @@ export default function LoginForm() {
         </Link>
       </p>
 
-      {/* Divider */}
       <div className="flex items-center gap-2">
         <hr className="flex-1 border-gray-300 dark:border-gray-600" />
         <span className="text-sm text-gray-500 dark:text-gray-400">Hoặc</span>
         <hr className="flex-1 border-gray-300 dark:border-gray-600" />
       </div>
 
-      {/* Social login */}
       <div className="flex flex-col gap-3">
         <button
           type="button"

@@ -1,4 +1,4 @@
-import RegisterForm from "@/app/components/register/RegisterForm";
+import RegisterForm from "./components/RegisterForm";
 
 export const dynamic = "force-dynamic"; // SSR mỗi lần request
 

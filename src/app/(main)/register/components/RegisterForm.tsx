@@ -36,7 +36,6 @@ export default function RegisterForm() {
       setSuccess("Đăng ký thành công! Hãy đăng nhập.");
       console.log("Register success:", data);
 
-      // Reset form
       setUserName("");
       setEmail("");
       setPassword("");
@@ -56,7 +55,6 @@ export default function RegisterForm() {
         Đăng ký
       </h2>
 
-      {/* Name */}
       <input
         type="text"
         placeholder="Họ và tên"
@@ -66,7 +64,6 @@ export default function RegisterForm() {
         required
       />
 
-      {/* Email */}
       <input
         type="email"
         placeholder="Email"
@@ -76,7 +73,6 @@ export default function RegisterForm() {
         required
       />
 
-      {/* Password */}
       <input
         type="password"
         placeholder="Mật khẩu"
@@ -86,7 +82,6 @@ export default function RegisterForm() {
         required
       />
 
-      {/* Confirm Password */}
       <input
         type="password"
         placeholder="Xác nhận mật khẩu"
@@ -96,7 +91,6 @@ export default function RegisterForm() {
         required
       />
 
-      {/* Submit button */}
       <button
         type="submit"
         className="bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition"
@@ -104,7 +98,6 @@ export default function RegisterForm() {
         Đăng ký
       </button>
 
-      {/* Link to login */}
       <p className="text-center text-sm text-gray-600 dark:text-gray-400">
         Đã có tài khoản?{" "}
         <Link

@@ -1,8 +1,8 @@
 import SearchForm from "@/app/components/ui/form/Search";
 import Pagination from "@/app/components/ui/Pagination";
 import { fetchPosts } from "@/app/services/posts/posts.services";
-import GlobalLoading from "../common/loading/GlobalLoading";
-import PostCardList from "@/app/components/blog/PostCardList";
+import GlobalLoading from "../components/ui/GlobalLoading";
+import PostCardList from "@/app/(main)/blog/components/PostCardList";
 
 export const metadata = {
   title: "Blog",

@@ -1,6 +1,6 @@
 import { api } from "../api";
 import { POSTS_ENDPOINT } from "./posts.api";
-import { FetchPostsParams, Post } from "./post.type";
+import { FetchPostsParams, Post } from "../../types/post.type";
 
 export async function fetchPosts({
   key_search = "",
