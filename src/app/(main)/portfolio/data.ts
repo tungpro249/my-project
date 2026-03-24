@@ -103,8 +103,7 @@ export const bio = {
   description:
     "I'm a Frontend Developer with 2 years of experience in React and 1 year with Vue.js. I'm proficient in UI libraries such as Ant Design, Material UI, and Bootstrap, with strong knowledge of HTML, CSS, JavaScript, and TypeScript. I also have experience in web performance optimization, responsive design, and teamwork in Agile/Scrum environments.",
   github: "https://github.com/tungpro249",
-  linkedin:
-    "https://linkedin.com/in/t%C3%B9ng-%C4%91o%C3%A0n-3b1292236",
+  linkedin: "https://linkedin.com/in/t%C3%B9ng-%C4%91o%C3%A0n-3b1292236",
   education: {
     university: "University of Transport and Communications",
     major: "Computer Networks",
