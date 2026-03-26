@@ -1,6 +1,6 @@
-import SearchForm from "@/app/components/ui/form/Search";
-import Pagination from "@/app/components/ui/Pagination";
-import { fetchPosts } from "@/app/services/posts/posts.services";
+import SearchForm from "@/components/ui/form/Search";
+import Pagination from "@/components/ui/Pagination";
+import { fetchPosts } from "@/services/posts/posts.services";
 import PostCardList from "./components/PostCardList";
 
 export const metadata = {

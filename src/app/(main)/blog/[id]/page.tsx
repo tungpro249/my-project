@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import DOMPurify from "isomorphic-dompurify";
 import PostSimilar from "../components/PostSimilar";
-import { Post } from "@/app/types/post.type";
+import { Post } from "@/types/post.type";
 import { Metadata } from "next";
-import { fetchPostBySlug } from "@/app/services/posts/posts.services";
+import { fetchPostBySlug } from "@/services/posts/posts.services";
 
 type Props = {
   params: Promise<{ id: string }>;

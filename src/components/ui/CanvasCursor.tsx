@@ -1,6 +1,6 @@
 "use client";
 
-import useCanvasCursor from "@/app/hooks/useCanvasCursor";
+import useCanvasCursor from "@/hooks/useCanvasCursor";
 
 const CanvasCursor = () => {
   useCanvasCursor();

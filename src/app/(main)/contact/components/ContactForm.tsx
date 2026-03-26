@@ -1,5 +1,5 @@
 "use client";
-import { sendMail } from "@/app/services/contact/contact.services";
+import { sendMail } from "@/services/contact/contact.services";
 import { useState } from "react";
 
 export default function ContactForm() {

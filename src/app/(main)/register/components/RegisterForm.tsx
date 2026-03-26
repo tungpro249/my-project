@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { api } from "@/app/services/api";
+import { api } from "@/services/api";
 
 export default function RegisterForm() {
   const [username, setUserName] = useState("");

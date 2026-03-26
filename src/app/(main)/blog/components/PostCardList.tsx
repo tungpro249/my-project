@@ -2,7 +2,7 @@ import DOMPurify from "isomorphic-dompurify";
 import { Row, Col, Card } from "antd";
 import Link from "next/link";
 import dayjs from "dayjs";
-import { Post } from "@/app/types/post.type";
+import { Post } from "@/types/post.type";
 
 interface PostCardListProps {
   posts: Post[];

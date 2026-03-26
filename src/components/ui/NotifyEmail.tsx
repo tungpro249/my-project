@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import { message } from "antd";
-import { registerNotification } from "@/app/services/contact/contact.services";
-import { useLoadingStore } from "@/app/stores/useLoadingStore";
+import { registerNotification } from "@/services/contact/contact.services";
+import { useLoadingStore } from "@/stores/useLoadingStore";
 
 export const NotifyEmail = () => {
   const [email, setEmail] = useState("");

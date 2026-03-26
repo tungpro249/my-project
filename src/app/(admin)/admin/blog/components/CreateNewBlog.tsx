@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import CategorySelect from "@/app/components/ui/CategorySelect";
-import QuillEditor from "@/app/components/ui/quill/QuillEditor";
-import { createPost } from "@/app/services/posts/posts.services";
+import CategorySelect from "@/components/ui/CategorySelect";
+import QuillEditor from "@/components/ui/quill/QuillEditor";
+import { createPost } from "@/services/posts/posts.services";
 
 export default function CreateNewBlogClient() {
   const [title, setTitle] = useState("");

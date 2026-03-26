@@ -2,8 +2,8 @@ import DOMPurify from "isomorphic-dompurify";
 import { Row, Col, Card } from "antd";
 import Link from "next/link";
 import dayjs from "dayjs";
-import { Post } from "@/app/types/post.type";
-import { api } from "@/app/services/api";
+import { Post } from "@/types/post.type";
+import { api } from "@/services/api";
 
 export default async function PostSimilar() {
   try {

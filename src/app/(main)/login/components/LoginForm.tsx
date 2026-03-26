@@ -1,6 +1,6 @@
 "use client";
-import { loginWithGoogle } from "@/app/services/auth/auth.service";
-import { api } from "@/app/services/api";
+import { loginWithGoogle } from "@/services/auth/auth.service";
+import { api } from "@/services/api";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { useState } from "react";

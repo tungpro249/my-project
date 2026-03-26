@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { Button, Popconfirm, Table, message } from "antd";
 import Link from "next/link";
-import { Post } from "@/app/types/post.type";
-import { api } from "@/app/services/api";
+import { Post } from "@/types/post.type";
+import { api } from "@/services/api";
 
 export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
   const [posts, setPosts] = useState<Post[]>(initialPosts);
